@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Aggie Sailing Club</title>
+    <meta name="description" content="Browse our photo gallery showcasing sailing adventures, races, events, and beautiful moments on the water.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/images/am burgee.jpeg" alt="A&M Burgee" class="nav-burgee">
+                    <span>Texas A&M Sailing</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="membership.html" class="nav-link">Membership</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="articles.html" class="nav-link">Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link active">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg">
+            <img src="assets/images/racing-austin1.JPG" alt="Sailing gallery">
+        </div>
+        <div class="page-header-content">
+            <div class="container">
+                <h1>Texas A&M Sailing Gallery</h1>
+                <p>A collection of photos from the Aggie Sailing Team through the years</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="year-filter-container">
+                <label for="yearFilter">Filter by Year:</label>
+                <input type="text" id="yearFilter" placeholder="Enter year (e.g., 2024)" maxlength="4">
+                <button id="clearFilter" class="btn btn-outline">Clear Filter</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Images will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-content">
+                <h2>Share Your Photos</h2>
+                <p>Have great photos from your sailing adventures? Share them with our community!</p>
+                <div class="upload-options">
+                    <div class="upload-option">
+                        <i class="fas fa-upload"></i>
+                        <h3>Upload Photos</h3>
+                        <p>Share your sailing moments with the club</p>
+                        <button class="btn btn-primary">Upload Now</button>
+                    </div>
+                    <div class="upload-option">
+                        <i class="fas fa-camera"></i>
+                        <h3>Photo Guidelines</h3>
+                        <p>Learn about our photo submission guidelines</p>
+                        <button class="btn btn-outline">View Guidelines</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aggie Sailing Club</h3>
+                    <p>Experience the thrill of sailing with our welcoming community of sailors. From beginners to experienced racers, we have something for everyone.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sailingteam.tamu/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/tamusailing" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@TAMUSailing?app=desktop&sub_confirmation=1" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 8200 Sandy Point Road, Bryan, Texas 77807</p>
+                        <p><i class="fas fa-phone"></i> (512) 636-5009</p>
+                        <p><i class="fas fa-envelope"></i> texasaggiesailing@gmail.com</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Practice Times</h4>
+                    <div class="hours">
+                        <p><strong>Club Practice Times:</strong> M-T-Th-F 5:00 PM - 8:00 PM</p>
+                        <p><strong>Team Practice Time</strong> W 5:00 PM - 8:00 PM</p>
+                   
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Aggie Sailing Club. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

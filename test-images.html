@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-image { max-width: 300px; margin: 10px; border: 1px solid #ccc; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Image Loading Test</h1>
+    
+    <h2>Testing assets/images/</h2>
+    <div>
+        <img src="assets/images/alumni-race.JPG" alt="Test 1" class="test-image" onload="this.nextElementSibling.textContent='✓ Loaded'" onerror="this.nextElementSibling.textContent='✗ Failed to load'">
+        <span class="error"></span>
+    </div>
+    
+    <h2>Testing assets/unz_images/</h2>
+    <div>
+        <img src="assets/unz_images/2013 McCarthy Cup.JPG" alt="Test 2" class="test-image" onload="this.nextElementSibling.textContent='✓ Loaded'" onerror="this.nextElementSibling.textContent='✗ Failed to load'">
+        <span class="error"></span>
+    </div>
+    
+    <div>
+        <img src="assets/unz_images/21_mw.jpeg" alt="Test 3" class="test-image" onload="this.nextElementSibling.textContent='✓ Loaded'" onerror="this.nextElementSibling.textContent='✗ Failed to load'">
+        <span class="error"></span>
+    </div>
+</body>
+</html>

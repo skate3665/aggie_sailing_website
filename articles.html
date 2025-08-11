@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Aggie Sailing Club</title>
+    <meta name="description" content="Read the latest sailing articles, tips, and news from the Aggie Sailing Club community.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/images/am burgee.jpeg" alt="A&M Burgee" class="nav-burgee">
+                    <span>Texas A&M Sailing</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="membership.html" class="nav-link">Membership</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="articles.html" class="nav-link active">Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg">
+            <img src="assets/images/kate-race-tulane.jpg" alt="Sailing articles">
+        </div>
+        <div class="page-header-content">
+            <div class="container">
+                <h1>Sailing Articles</h1>
+                <p>Discover tips, techniques, and stories from our sailing community</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Categories -->
+    <section class="article-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card active" data-category="all">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>All Articles</h3>
+                </div>
+                <div class="category-card" data-category="racing">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Racing</h3>
+                </div>
+                <div class="category-card" data-category="safety">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safety</h3>
+                </div>
+                <div class="category-card" data-category="maintenance">
+                    <i class="fas fa-tools"></i>
+                    <h3>Maintenance</h3>
+                </div>
+                <div class="category-card" data-category="techniques">
+                    <i class="fas fa-ship"></i>
+                    <h3>Techniques</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-image">
+                    <img src="assets/images/racing-austin1.JPG" alt="Collegiate racing on lake" onerror="this.src='assets/images/kate-race-tulane.jpg'">
+                </div>
+                <div class="featured-text">
+                    <div class="article-meta">
+                        <span class="article-date">August 8, 2025</span>
+                        <span class="article-category">Racing</span>
+                    </div>
+                    <h2>Collegiate Racing: Mastering Lake Sailing</h2>
+                    <p>When your team hits the water for a college regatta on a lake, you're entering a playground of shifting winds, subtle geography, and strategic nuance. While saltwater sailors often focus on tides and ocean breezes, lake racing demands a sharp eye for land effects and puffs.</p>
+                    <p>Learn the essential strategies for reading the land to windward, mastering shoreline tactics, and positioning yourself to intercept puffs without losing distance. This comprehensive guide will help you navigate the unpredictable nature of lake sailing with confidence.</p>
+                    <a href="#" class="btn btn-primary" onclick="showLakeSailingArticle()">Read Full Article</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="articles-section">
+        <div class="container">
+            <h2>Latest Articles</h2>
+            <div class="articles-grid">
+                <article class="article-card" data-category="racing">
+                    <div class="article-image">
+                        <img src="assets/images/racing-austin1.JPG" alt="Lake racing strategy" onerror="this.src='assets/images/kate-race-tulane.jpg'">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">August 8, 2025</span>
+                            <span class="article-category">Racing</span>
+                        </div>
+                        <h3>Mastering Lake Sailing</h3>
+                        <p>Master the art of lake racing with strategies for reading land effects, shoreline tactics, and puff positioning. Essential reading for collegiate sailors competing on inland waters.</p>
+                        <a href="#" class="read-more" onclick="showLakeSailingArticle()">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="article-card" data-category="racing">
+                    <div class="article-image">
+                        <img src="assets/images/racing-austin-2.JPG" alt="Different sailing conditions" onerror="this.src='assets/images/kate-race-tulane.jpg'">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">August 8, 2025</span>
+                            <span class="article-category">Racing</span>
+                        </div>
+                        <h3>Different Conditions, Different Sailing</h3>
+                        <p>Learn how to adapt your racing tactics based on wind conditions. From light air pressure hunting to heavy air shift playing, master the art of condition-specific strategy.</p>
+                        <a href="#" class="read-more" onclick="showConditionsArticle()">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="article-card" data-category="racing">
+                    <div class="article-image">
+                        <img src="assets/images/racing-tulane.jpg" alt="Starting strong in shifty air" onerror="this.src='assets/images/kate-race-tulane.jpg'">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">August 6, 2025</span>
+                            <span class="article-category">Racing</span>
+                        </div>
+                        <h3>Starting Strong in Shifty Air</h3>
+                        <p>Master the art of starting in unpredictable lake conditions. Learn middle-line advantages, aggressive timing, and seamless transitions from start to strategy.</p>
+                        <a href="#" class="read-more" onclick="showStartingArticle()">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="article-card" data-category="racing">
+                    <div class="article-image">
+                        <img src="assets/images/lineup-racing-alumni.jpg" alt="Racing strategy fundamentals" onerror="this.src='assets/images/lineup-racing-alumni.jpg'">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">August 4, 2025</span>
+                            <span class="article-category">Racing</span>
+                        </div>
+                        <h3>Racing Strategy Fundamentals</h3>
+                        <p>Master the core elements of sailboat racing: starting techniques, mark rounding, and tactical decision-making. Build the foundation for consistent front-of-fleet finishes.</p>
+                        <a href="#" class="read-more" onclick="showStrategyArticle()">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="article-card" data-category="maintenance">
+                    <div class="article-image">
+                        <img src="assets/images/kate-race-tulane.jpg" alt="C420 maintenance basics" onerror="this.src='assets/images/racing-austin1.JPG'">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">August 2, 2025</span>
+                            <span class="article-category">Maintenance</span>
+                        </div>
+                        <h3>C420 Maintenance Basics</h3>
+                        <p>Essential maintenance guide for Club 420 sailors. Learn hull care, rigging maintenance, sail care, and transport tips to keep your boat competitive and reliable.</p>
+                        <a href="#" class="read-more" onclick="showC420MaintenanceArticle()">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="article-card" data-category="racing">
+                    <div class="article-image">
+                        <img src="assets/images/racing-austin1.JPG" alt="Fundamental rules of collegiate racing" onerror="this.src='assets/images/kate-race-tulane.jpg'">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">July 30, 2025</span>
+                            <span class="article-category">Racing</span>
+                        </div>
+                        <h3>Fundamental Rules of Collegiate Racing</h3>
+                        <p>Master the essential Racing Rules of Sailing for collegiate competition. Learn starboard/port, windward/leeward, mark room, and sportsmanship principles to avoid protests and penalties.</p>
+                        <a href="#" class="read-more" onclick="showRacingRulesArticle()">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="article-card" data-category="safety">
+                    <div class="article-image">
+                        <img src="assets/images/alumni-race.JPG" alt="Weather article">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">August 10, 2025</span>
+                            <span class="article-category">Safety</span>
+                        </div>
+                        <h3>Reading Weather Patterns</h3>
+                        <p>Learn how to interpret weather forecasts and wind patterns for safer, more enjoyable sailing. Understanding weather conditions is crucial for safe navigation and optimal performance.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+            
+
+                <article class="article-card" data-category="techniques">
+                    <div class="article-image">
+                        <img src="assets/images/ryan-w-megaphone.jpeg" alt="Sailing techniques">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">August 10, 2025</span>
+                            <span class="article-category">Techniques</span>
+                        </div>
+                        <h3>Advanced Sailing Techniques</h3>
+                        <p>Master advanced sailing techniques including tacking, jibing, and sail trim optimization. These skills will help you become a more confident and capable sailor.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+
+
+                <article class="article-card" data-category="safety">
+                    <div class="article-image">
+                        <img src="assets/images/alumni-racing.jpeg" alt="Safety equipment">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">November 10, 2024</span>
+                            <span class="article-category">Safety</span>
+                        </div>
+                        <h3>Essential Safety Equipment</h3>
+                        <p>Complete guide to essential safety equipment every sailor should have on board. Safety should always be your top priority when out on the water.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter to receive the latest articles, events, and sailing tips directly in your inbox.</p>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aggie Sailing Club</h3>
+                    <p>Experience the thrill of sailing with our welcoming community of sailors. From beginners to experienced racers, we have something for everyone.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sailingteam.tamu/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/tamusailing" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@TAMUSailing?app=desktop&sub_confirmation=1" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 8200 Sandy Point Road, Bryan, Texas 77807</p>
+                        <p><i class="fas fa-phone"></i> (512) 636-5009</p>
+                        <p><i class="fas fa-envelope"></i> texasaggiesailing@gmail.com</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Practice Times</h4>
+                    <div class="hours">
+                        <p><strong>Club Practice Times:</strong> M-T-Th-F 5:00 PM - 8:00 PM</p>
+                        <p><strong>Team Practice Time</strong> W 5:00 PM - 8:00 PM</p>
+                   
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Aggie Sailing Club. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/articles.js"></script>
+</body>
+</html>
