@@ -80,13 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isMobile) {
                 setTimeout(() => {
                     const playerState = event.target.getPlayerState();
-                    console.log('Mobile player state after 2s:', playerState);
+                    console.log('Mobile player state after 5s:', playerState);
                     
                     if (playerState !== 1) { // 1 = playing
                         console.log('Autoplay blocked on mobile, showing fallback');
                         heroFallback.style.opacity = '1';
                     }
-                }, 2000);
+                }, 5000);
             }
         }
 
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
             createYouTubePlayer();
         }
 
-        // Fallback: If API doesn't load within 3 seconds, create a simple iframe
+        // Fallback: If API doesn't load within 8 seconds, create a simple iframe
         setTimeout(function() {
             if (!player || !player.getPlayerState) {
                 console.log('YouTube API not loaded, creating fallback iframe');
@@ -143,15 +143,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     </iframe>
                 `;
             }
-        }, 3000);
+        }, 8000);
 
-        // Show fallback image if video doesn't load within 8 seconds
+        // Show fallback image if video doesn't load within 15 seconds
         setTimeout(function() {
             if (!player || !player.getPlayerState) {
                 console.log('Video not loaded, showing fallback image');
                 heroFallback.style.opacity = '1';
             }
-        }, 8000);
+        }, 15000);
     }
 
     // Smooth scrolling for anchor links
