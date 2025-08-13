@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroVideo = document.getElementById('hero-video');
     const heroFallback = document.querySelector('.hero-fallback-image');
     let player;
+    
+    // Detect mobile device more accurately
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
     // Load YouTube IFrame Player API
     if (heroVideo) {
@@ -55,11 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     iv_load_policy: 3,
                     disablekb: 1,
                     fs: 0,
-                    color: 'white'
+                    color: 'white',
+                    enablejsapi: 1
                 },
                 events: {
                     'onReady': onPlayerReady,
-                    'onError': onPlayerError
+                    'onError': onPlayerError,
+                    'onStateChange': onPlayerStateChange
                 }
             });
         }
@@ -68,10 +73,20 @@ document.addEventListener('DOMContentLoaded', function() {
             // Player is ready
             console.log('YouTube player ready');
             
-            // Pause video on mobile to save bandwidth
-            if (window.innerWidth <= 768) {
-                event.target.pauseVideo();
-                heroFallback.style.opacity = '1';
+            // Try to play the video on all devices
+            event.target.playVideo();
+            
+            // On mobile, check if autoplay was blocked
+            if (isMobile) {
+                setTimeout(() => {
+                    const playerState = event.target.getPlayerState();
+                    console.log('Mobile player state after 2s:', playerState);
+                    
+                    if (playerState !== 1) { // 1 = playing
+                        console.log('Autoplay blocked on mobile, showing fallback');
+                        heroFallback.style.opacity = '1';
+                    }
+                }, 2000);
             }
         }
 
@@ -79,6 +94,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Video failed to load, show fallback image
             console.warn('YouTube player error:', event.data);
             heroFallback.style.opacity = '1';
+        }
+        
+        function onPlayerStateChange(event) {
+            // Handle player state changes
+            const state = event.data;
+            console.log('Player state changed:', state);
+            
+            // State 1 = playing, State 2 = paused, State 3 = buffering, State 5 = cued
+            if (state === 1) {
+                // Video is playing
+                console.log('Video is now playing');
+                heroFallback.style.opacity = '0';
+            } else if (state === 2 || state === 3) {
+                // Video is paused or buffering
+                console.log('Video is paused or buffering');
+            }
         }
 
         // Set up the global callback for YouTube API
@@ -104,9 +135,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('YouTube API not loaded, creating fallback iframe');
                 heroVideo.innerHTML = `
                     <iframe 
-                        src="https://www.youtube.com/embed/dGi4J18utDY?autoplay=1&mute=1&loop=1&playlist=dGi4J18utDY&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&color=white"
+                        src="https://www.youtube.com/embed/dGi4J18utDY?autoplay=1&mute=1&loop=1&playlist=dGi4J18utDY&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&color=white&enablejsapi=1"
                         frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
                         style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
                     </iframe>
