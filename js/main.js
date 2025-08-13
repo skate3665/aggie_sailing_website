@@ -31,29 +31,96 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Hero video handling
+    // Hero video handling with YouTube IFrame Player API
     const heroVideo = document.getElementById('hero-video');
     const heroFallback = document.querySelector('.hero-fallback-image');
+    let player;
 
+    // Load YouTube IFrame Player API
     if (heroVideo) {
-        // Check if video can be played
-        heroVideo.addEventListener('error', function() {
-            // Video failed to load, show fallback image
-            heroFallback.style.opacity = '1';
-        });
+        // Create YouTube player
+        function createYouTubePlayer() {
+            player = new YT.Player('hero-video', {
+                videoId: 'dGi4J18utDY',
+                playerVars: {
+                    autoplay: 1,
+                    mute: 1,
+                    loop: 1,
+                    playlist: 'dGi4J18utDY',
+                    controls: 0,
+                    showinfo: 0,
+                    rel: 0,
+                    modestbranding: 1,
+                    playsinline: 1,
+                    iv_load_policy: 3,
+                    disablekb: 1,
+                    fs: 0,
+                    color: 'white'
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onError': onPlayerError
+                }
+            });
+        }
 
-        // Show fallback if video doesn't load within 3 seconds
-        setTimeout(function() {
-            if (heroVideo.readyState === 0) {
+        function onPlayerReady(event) {
+            // Player is ready
+            console.log('YouTube player ready');
+            
+            // Pause video on mobile to save bandwidth
+            if (window.innerWidth <= 768) {
+                event.target.pauseVideo();
                 heroFallback.style.opacity = '1';
+            }
+        }
+
+        function onPlayerError(event) {
+            // Video failed to load, show fallback image
+            console.warn('YouTube player error:', event.data);
+            heroFallback.style.opacity = '1';
+        }
+
+        // Set up the global callback for YouTube API
+        window.onYouTubeIframeAPIReady = function() {
+            console.log('YouTube API loaded');
+            createYouTubePlayer();
+        };
+
+        // Load YouTube API if not already loaded
+        if (typeof YT === 'undefined' || !YT.Player) {
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        } else {
+            // API already loaded
+            createYouTubePlayer();
+        }
+
+        // Fallback: If API doesn't load within 3 seconds, create a simple iframe
+        setTimeout(function() {
+            if (!player || !player.getPlayerState) {
+                console.log('YouTube API not loaded, creating fallback iframe');
+                heroVideo.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube.com/embed/dGi4J18utDY?autoplay=1&mute=1&loop=1&playlist=dGi4J18utDY&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&color=white"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+                    </iframe>
+                `;
             }
         }, 3000);
 
-        // Pause video on mobile to save bandwidth
-        if (window.innerWidth <= 768) {
-            heroVideo.pause();
-            heroFallback.style.opacity = '1';
-        }
+        // Show fallback image if video doesn't load within 8 seconds
+        setTimeout(function() {
+            if (!player || !player.getPlayerState) {
+                console.log('Video not loaded, showing fallback image');
+                heroFallback.style.opacity = '1';
+            }
+        }, 8000);
     }
 
     // Smooth scrolling for anchor links
@@ -70,15 +137,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Image loading animation
+    // Enhanced image loading with lazy loading support
     const images = document.querySelectorAll('img');
     images.forEach(img => {
-        if (img.complete) {
-            img.classList.add('loaded');
-        } else {
+        // Add loading placeholder
+        if (img.loading === 'lazy') {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'image-placeholder';
+            placeholder.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            `;
+            
+            if (img.parentElement) {
+                img.parentElement.style.position = 'relative';
+                img.parentElement.insertBefore(placeholder, img);
+            }
+            
+            // Remove placeholder when image loads
             img.addEventListener('load', function() {
                 this.classList.add('loaded');
+                if (placeholder.parentElement) {
+                    placeholder.remove();
+                }
             });
+            
+            // Handle image load errors
+            img.addEventListener('error', function() {
+                console.warn('Failed to load image:', this.src);
+                this.style.display = 'none';
+                if (placeholder.parentElement) {
+                    placeholder.remove();
+                }
+            });
+        } else {
+            // For non-lazy images
+            if (img.complete) {
+                img.classList.add('loaded');
+            } else {
+                img.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
+            }
         }
     });
 
