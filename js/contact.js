@@ -291,18 +291,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 400 * index);
     });
     
+    // Store original form content globally
+    let originalMailchimpForm = null;
+    
     // Mobile form optimization
     function optimizeFormsForMobile() {
         const isMobile = window.innerWidth <= 768;
         const mcEmbedSignup = document.getElementById('mc_embed_signup');
         
+        // Prevent re-initialization if already optimized
+        if (mcEmbedSignup && mcEmbedSignup.classList.contains('mobile-optimized')) {
+            return;
+        }
+        
         if (mcEmbedSignup && isMobile) {
+            // Store original form content if not already stored
+            if (!originalMailchimpForm) {
+                originalMailchimpForm = mcEmbedSignup.innerHTML;
+            }
+            
             // Add mobile class for simplified styling
             mcEmbedSignup.classList.add('mobile-simplified');
             
             // Create a simplified mobile version
             const mobileForm = createMobileNewsletterForm();
-            const originalForm = mcEmbedSignup.cloneNode(true);
             
             // Replace with simplified version on mobile
             mcEmbedSignup.innerHTML = mobileForm;
@@ -322,18 +334,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 cursor: pointer;
             `;
             
+            // Track current form state
+            let isShowingFullForm = false;
+            
             toggleButton.addEventListener('click', function() {
-                if (mcEmbedSignup.innerHTML === mobileForm) {
-                    mcEmbedSignup.innerHTML = originalForm.innerHTML;
+                if (!isShowingFullForm) {
+                    // Switch to full form
+                    mcEmbedSignup.innerHTML = originalMailchimpForm;
                     toggleButton.textContent = 'Show Simple Form';
+                    isShowingFullForm = true;
                 } else {
+                    // Switch to simple form
                     mcEmbedSignup.innerHTML = mobileForm;
                     toggleButton.textContent = 'Show Full Form';
+                    isShowingFullForm = false;
                 }
+                // Re-append the toggle button
                 mcEmbedSignup.appendChild(toggleButton);
             });
             
             mcEmbedSignup.appendChild(toggleButton);
+            
+            // Mark as optimized to prevent re-initialization
+            mcEmbedSignup.classList.add('mobile-optimized');
         }
     }
     
@@ -373,9 +396,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize mobile optimization
     optimizeFormsForMobile();
     
-    // Re-optimize on window resize
+    // Handle window resize
     window.addEventListener('resize', function() {
-        setTimeout(optimizeFormsForMobile, 100);
+        const mcEmbedSignup = document.getElementById('mc_embed_signup');
+        const isMobile = window.innerWidth <= 768;
+        
+        if (mcEmbedSignup) {
+            if (isMobile && !mcEmbedSignup.classList.contains('mobile-optimized')) {
+                // Switch to mobile view
+                setTimeout(optimizeFormsForMobile, 100);
+            } else if (!isMobile && mcEmbedSignup.classList.contains('mobile-optimized')) {
+                // Switch back to desktop view - restore original form
+                mcEmbedSignup.classList.remove('mobile-optimized', 'mobile-simplified');
+                if (originalMailchimpForm) {
+                    mcEmbedSignup.innerHTML = originalMailchimpForm;
+                }
+            }
+        }
     });
     
     // Enhanced form validation and UX
