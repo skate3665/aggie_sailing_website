@@ -2209,116 +2209,58 @@ img.loaded {
     }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        /* Force light mode colors even when system is in dark mode */
-        --white: #ffffff !important;
-        --light-gray: #f8fafc !important;
-        --gray: #64748b !important;
-        --dark-gray: #232323 !important;
-        --black: #0f172a !important;
-        
-        /* Force light mode specific colors */
-        --glass-bg: rgba(255, 255, 255, 0.1) !important;
-        --glass-border: rgba(255, 255, 255, 0.2) !important;
-        --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-        --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
-        --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-        --shadow-glow: 0 0 20px rgba(80, 0, 0, 0.3) !important;
-    }
-
-    body {
-        background: #ffffff !important;
-        color: #232323 !important;
-    }
-
-    /* Force all elements to use light mode styling */
-    * {
-        color-scheme: light !important;
-    }
-
-    /* Override any browser-applied dark mode styles */
-    html {
-        color-scheme: light !important;
-    }
-
-    /* Ensure form elements stay light */
-    input, textarea, select {
-        background-color: #ffffff !important;
-        color: white !important;
-        border-color: #e2e8f0 !important;
-    }
-
-    /* Force scrollbar to light mode */
-    ::-webkit-scrollbar {
-        background-color: #f1f5f9 !important;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: #cbd5e1 !important;
-    }
-
-    /* Override any system-level dark mode overrides */
-    img {
-        filter: none !important;
-    }
-
-    /* Ensure all text remains readable */
-    p, span, div, a, li {
-        color: inherit !important;
-    }
-
-    /* Force button text to be off-white in dark mode - more specific selectors */
-    body .btn,
-    body a.btn,
-    body button.btn {
-        color: #f8fafc !important;
-    }
+/* Force light mode for all users regardless of system preference */
+:root {
+    /* Ensure light mode colors are always used */
+    --white: #ffffff;
+    --light-gray: #f8fafc;
+    --gray: #64748b;
+    --dark-gray: #232323;
+    --black: #0f172a;
     
-    body .btn-primary,
-    body a.btn-primary,
-    body button.btn-primary {
-        color: #ffffff !important;
-    }
-    
-    /* Ensure maroon buttons have white text when not hovered */
-    body .btn-primary:not(:hover),
-    body a.btn-primary:not(:hover),
-    body button.btn-primary:not(:hover) {
-        color: #ffffff !important;
-    }
-    
-    body .btn-secondary,
-    body a.btn-secondary,
-    body button.btn-secondary {
-        color: #f8fafc !important;
-    }
-    
-    body .btn-outline,
-    body a.btn-outline,
-    body button.btn-outline {
-        color: #f8fafc !important;
-    }
-    
-    /* Ensure button text stays visible on hover */
-    body .btn:hover,
-    body a.btn:hover,
-    body button.btn:hover {
-        color: #ffffff !important;
-    }
-    
-    body .btn-secondary:hover,
-    body a.btn-secondary:hover,
-    body button.btn-secondary:hover {
-        color: var(--primary-maroon) !important;
-    }
-    
-    body .btn-outline:hover,
-    body a.btn-outline:hover,
-    body button.btn-outline:hover {
-        color: #ffffff !important;
-    }
+    /* Light mode specific colors */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-glow: 0 0 20px rgba(80, 0, 0, 0.3);
+}
+
+/* Force light mode styling for all elements */
+* {
+    color-scheme: light !important;
+}
+
+/* Override any browser-applied dark mode styles */
+html {
+    color-scheme: light !important;
+}
+
+body {
+    background: #ffffff !important;
+    color: #232323 !important;
+}
+
+/* Ensure form elements stay light */
+input, textarea, select {
+    background-color: #ffffff !important;
+    color: #232323 !important;
+    border-color: #e2e8f0 !important;
+}
+
+/* Force scrollbar to light mode */
+::-webkit-scrollbar {
+    background-color: #f1f5f9 !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1 !important;
+}
+
+/* Override any system-level dark mode overrides */
+img {
+    filter: none !important;
 }
 
 /* Newsletter and Support Section */
