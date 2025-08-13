@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
     <title>Aggie Sailing Club - Welcome to the Water</title>
     <meta name="description" content="Join the Aggie Sailing Club for racing, cruising, and sailing adventures on beautiful lakes. Open to all skill levels.">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1.2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -55,16 +56,19 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-video-container">
-            <video autoplay muted loop id="hero-video">
-                <source src="assets/videos/compressed-drone.mp4" type="video/mp4">
-                <!-- Fallback image will be shown if video fails to load -->
-            </video>
+            <iframe 
+                id="hero-video"
+                src="https://www.youtube.com/embed/dGi4J18utDY?autoplay=1&mute=1&loop=1&playlist=dGi4J18utDY&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&color=white"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
             <div class="hero-fallback-image"></div>
         </div>
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Welcome to Aggie Sailing</h1>
-                <p>"Where do you even sail in College Station??" <br><i>~Everyone</p>
+                <p style="color: white;">"Where do you even sail in College Station??" <br><i>~Everyone</p>
                 <div class="hero-buttons">
                     <a href="membership.html" class="btn btn-primary">Join the Club</a>
                     <a href="about.html" class="btn btn-secondary">Learn More</a>
