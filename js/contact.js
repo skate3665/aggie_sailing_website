@@ -291,5 +291,127 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 400 * index);
     });
     
+    // Mobile form optimization
+    function optimizeFormsForMobile() {
+        const isMobile = window.innerWidth <= 768;
+        const mcEmbedSignup = document.getElementById('mc_embed_signup');
+        
+        if (mcEmbedSignup && isMobile) {
+            // Add mobile class for simplified styling
+            mcEmbedSignup.classList.add('mobile-simplified');
+            
+            // Create a simplified mobile version
+            const mobileForm = createMobileNewsletterForm();
+            const originalForm = mcEmbedSignup.cloneNode(true);
+            
+            // Replace with simplified version on mobile
+            mcEmbedSignup.innerHTML = mobileForm;
+            
+            // Add toggle for full form
+            const toggleButton = document.createElement('button');
+            toggleButton.textContent = 'Show Full Form';
+            toggleButton.className = 'mobile-form-toggle';
+            toggleButton.style.cssText = `
+                background: var(--primary-maroon);
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                margin-top: 1rem;
+                cursor: pointer;
+            `;
+            
+            toggleButton.addEventListener('click', function() {
+                if (mcEmbedSignup.innerHTML === mobileForm) {
+                    mcEmbedSignup.innerHTML = originalForm.innerHTML;
+                    toggleButton.textContent = 'Show Simple Form';
+                } else {
+                    mcEmbedSignup.innerHTML = mobileForm;
+                    toggleButton.textContent = 'Show Full Form';
+                }
+                mcEmbedSignup.appendChild(toggleButton);
+            });
+            
+            mcEmbedSignup.appendChild(toggleButton);
+        }
+    }
+    
+    function createMobileNewsletterForm() {
+        return `
+            <h2 style="color: maroon; text-align: center; margin-bottom: 1.5rem;">Subscribe to our newsletter</h2>
+            <div class="indicates-required" style="text-align: center; font-size: 0.85rem; color: #666; margin-bottom: 1.5rem;">
+                <span class="asterisk">*</span> indicates required
+            </div>
+            <div class="mc-field-group">
+                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" 
+                       style="width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px;">
+            </div>
+            <div class="mc-field-group">
+                <label for="mce-FNAME">First Name</label>
+                <input type="text" name="FNAME" class="text" id="mce-FNAME" value="" 
+                       style="width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px;">
+            </div>
+            <div class="mc-field-group">
+                <label for="mce-LNAME">Last Name</label>
+                <input type="text" name="LNAME" class="text" id="mce-LNAME" value="" 
+                       style="width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px;">
+            </div>
+            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                <input type="text" name="b_d377509d322333972642be1f9_0ad635d083" tabindex="-1" value="">
+            </div>
+            <div class="optionalParent">
+                <div class="clear foot">
+                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe"
+                           style="background: #500000; color: white; border: none; padding: 16px 28px; border-radius: 8px; font-size: 1.1rem; width: 100%; margin-top: 1rem; cursor: pointer;">
+                </div>
+            </div>
+        `;
+    }
+    
+    // Initialize mobile optimization
+    optimizeFormsForMobile();
+    
+    // Re-optimize on window resize
+    window.addEventListener('resize', function() {
+        setTimeout(optimizeFormsForMobile, 100);
+    });
+    
+    // Enhanced form validation and UX
+    const emailInput = document.getElementById('mce-EMAIL');
+    if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = '#e74c3c';
+                this.style.boxShadow = '0 0 0 3px rgba(231, 76, 60, 0.1)';
+            } else {
+                this.style.borderColor = '#e2e8f0';
+                this.style.boxShadow = 'none';
+            }
+        });
+        
+        emailInput.addEventListener('focus', function() {
+            this.style.borderColor = '#500000';
+            this.style.boxShadow = '0 0 0 3px rgba(80, 0, 0, 0.1)';
+        });
+    }
+    
+    // Form submission feedback
+    const form = document.getElementById('mc-embedded-subscribe-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            const submitButton = document.getElementById('mc-embedded-subscribe');
+            if (submitButton) {
+                submitButton.value = 'Subscribing...';
+                submitButton.disabled = true;
+                submitButton.style.opacity = '0.7';
+            }
+        });
+    }
+    
     console.log('Contact page JavaScript loaded successfully!');
 });

@@ -802,6 +802,203 @@ p {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Responsive iframe container for Google Forms */
+.form-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 140%; /* Aspect ratio for mobile - adjust as needed */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Enhanced Mailchimp form styling */
+#mc_embed_signup {
+    background: var(--white);
+    color: var(--dark-gray);
+    clear: left;
+    font: 14px var(--font-body);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+#mc_embed_signup h2 {
+    color: var(--primary-maroon);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+#mc_embed_signup .mc-field-group {
+    margin-bottom: 1.5rem;
+}
+
+#mc_embed_signup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+
+#mc_embed_signup input[type="email"],
+#mc_embed_signup input[type="text"],
+#mc_embed_signup select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    transition: var(--transition);
+    background: var(--white);
+}
+
+#mc_embed_signup input[type="email"]:focus,
+#mc_embed_signup input[type="text"]:focus,
+#mc_embed_signup select:focus {
+    outline: none;
+    border-color: var(--primary-maroon);
+    box-shadow: 0 0 0 3px rgba(80, 0, 0, 0.1);
+}
+
+#mc_embed_signup .button {
+    background: var(--primary-maroon);
+    color: var(--white);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#mc_embed_signup .button:hover {
+    background: var(--secondary-maroon);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+#mc_embed_signup .asterisk {
+    color: #e74c3c;
+}
+
+#mc_embed_signup .indicates-required {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+    .application-form {
+        padding: 1.5rem;
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+    
+    .form-container {
+        padding-bottom: 160%; /* Taller aspect ratio for mobile */
+    }
+    
+    #mc_embed_signup {
+        padding: 1.5rem;
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+    
+    #mc_embed_signup h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    #mc_embed_signup input[type="email"],
+    #mc_embed_signup input[type="text"],
+    #mc_embed_signup select {
+        padding: 14px 16px; /* Larger touch targets */
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    #mc_embed_signup .button {
+        padding: 16px 28px; /* Larger touch target */
+        font-size: 1.1rem;
+    }
+    
+    /* Simplify form on mobile - hide optional fields */
+    #mc_embed_signup .mc-field-group:not(:has(input[required])) {
+        display: none;
+    }
+    
+    /* Show simplified version for mobile */
+    #mc_embed_signup.mobile-simplified .mc-field-group:not(:has(input[required])) {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .application-form {
+        padding: 1rem;
+    }
+    
+    .form-container {
+        padding-bottom: 180%; /* Even taller for very small screens */
+    }
+    
+    #mc_embed_signup {
+        padding: 1rem;
+    }
+    
+    #mc_embed_signup h2 {
+        font-size: 1.3rem;
+    }
+    
+    /* Hide complex fields on very small screens */
+    #mc_embed_signup .mc-address-group,
+    #mc_embed_signup .mc-field-group:has(select) {
+        display: none;
+    }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .form-container {
+        padding-bottom: 120%; /* Medium aspect ratio for tablets */
+    }
+    
+    #mc_embed_signup {
+        padding: 2.5rem;
+    }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+    .form-container {
+        padding-bottom: 100%; /* Square aspect ratio for desktop */
+    }
+    
+    #mc_embed_signup {
+        padding: 3rem;
+    }
+}
+
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -3228,5 +3425,55 @@ img {
     
     .method i {
         margin-top: 0;
+    }
+}
+
+/* Calendar Section */
+.event-calendar {
+    padding: var(--section-padding);
+    background: var(--light-gray);
+}
+
+.calendar-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.calendar-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* 4:3 aspect ratio */
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+}
+
+.responsive-calendar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+}
+
+/* Mobile calendar optimizations */
+@media (max-width: 768px) {
+    .calendar-container {
+        padding-bottom: 100%; /* Square aspect ratio for mobile */
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+    
+    .responsive-calendar {
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-container {
+        padding-bottom: 120%; /* Taller aspect ratio for very small screens */
     }
 }
