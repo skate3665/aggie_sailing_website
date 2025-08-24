@@ -31,127 +31,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Hero video handling with YouTube IFrame Player API
+    // Hero video handling with GIF
     const heroVideo = document.getElementById('hero-video');
     const heroFallback = document.querySelector('.hero-fallback-image');
-    let player;
     
-    // Detect mobile device more accurately
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-
-    // Load YouTube IFrame Player API
+    // Load GIF video
     if (heroVideo) {
-        // Create YouTube player
-        function createYouTubePlayer() {
-            player = new YT.Player('hero-video', {
-                videoId: 'dGi4J18utDY',
-                playerVars: {
-                    autoplay: 1,
-                    mute: 1,
-                    loop: 1,
-                    playlist: 'dGi4J18utDY',
-                    controls: 0,
-                    showinfo: 0,
-                    rel: 0,
-                    modestbranding: 1,
-                    playsinline: 1,
-                    iv_load_policy: 3,
-                    disablekb: 1,
-                    fs: 0,
-                    color: 'white',
-                    enablejsapi: 1
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onError': onPlayerError,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            // Player is ready
-            console.log('YouTube player ready');
-            
-            // Try to play the video on all devices
-            event.target.playVideo();
-            
-            // On mobile, check if autoplay was blocked
-            if (isMobile) {
-                setTimeout(() => {
-                    const playerState = event.target.getPlayerState();
-                    console.log('Mobile player state after 5s:', playerState);
-                    
-                    if (playerState !== 1) { // 1 = playing
-                        console.log('Autoplay blocked on mobile, showing fallback');
-                        heroFallback.style.opacity = '1';
-                    }
-                }, 5000);
-            }
-        }
-
-        function onPlayerError(event) {
-            // Video failed to load, show fallback image
-            console.warn('YouTube player error:', event.data);
-            heroFallback.style.opacity = '1';
-        }
+        console.log('Loading GIF video');
         
-        function onPlayerStateChange(event) {
-            // Handle player state changes
-            const state = event.data;
-            console.log('Player state changed:', state);
-            
-            // State 1 = playing, State 2 = paused, State 3 = buffering, State 5 = cued
-            if (state === 1) {
-                // Video is playing
-                console.log('Video is now playing');
-                heroFallback.style.opacity = '0';
-            } else if (state === 2 || state === 3) {
-                // Video is paused or buffering
-                console.log('Video is paused or buffering');
-            }
+        // Create and insert the GIF
+        heroVideo.innerHTML = `
+            <img 
+                src="assets/videos/newgif.gif"
+                alt="Sailing video"
+                style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"
+                onload="console.log('GIF loaded successfully')"
+                onerror="console.warn('Failed to load GIF, showing fallback'); if(heroFallback) heroFallback.style.opacity = '1';"
+            >
+        `;
+        
+        // Hide fallback image since GIF is loaded
+        if (heroFallback) {
+            heroFallback.style.opacity = '0';
         }
-
-        // Set up the global callback for YouTube API
-        window.onYouTubeIframeAPIReady = function() {
-            console.log('YouTube API loaded');
-            createYouTubePlayer();
-        };
-
-        // Load YouTube API if not already loaded
-        if (typeof YT === 'undefined' || !YT.Player) {
-            const tag = document.createElement('script');
-            tag.src = 'https://www.youtube.com/iframe_api';
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        } else {
-            // API already loaded
-            createYouTubePlayer();
-        }
-
-        // Fallback: If API doesn't load within 8 seconds, create a simple iframe
-        setTimeout(function() {
-            if (!player || !player.getPlayerState) {
-                console.log('YouTube API not loaded, creating fallback iframe');
-                heroVideo.innerHTML = `
-                    <iframe 
-                        src="https://www.youtube.com/embed/dGi4J18utDY?autoplay=1&mute=1&loop=1&playlist=dGi4J18utDY&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&color=white&enablejsapi=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
-                    </iframe>
-                `;
-            }
-        }, 8000);
-
-        // Show fallback image if video doesn't load within 15 seconds
-        setTimeout(function() {
-            if (!player || !player.getPlayerState) {
-                console.log('Video not loaded, showing fallback image');
-                heroFallback.style.opacity = '1';
-            }
-        }, 15000);
     }
 
     // Smooth scrolling for anchor links

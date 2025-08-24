@@ -1,34 +1,43 @@
 // Articles page functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Helper function to safely remove modals
+    function removeModal(modal) {
+        if (modal && modal.parentNode) {
+            modal.parentNode.removeChild(modal);
+        }
+    }
     // Article category filtering
     const categoryCards = document.querySelectorAll('.category-card');
     const articleCards = document.querySelectorAll('.article-card');
 
-    categoryCards.forEach(card => {
-        card.addEventListener('click', function() {
-            // Remove active class from all category cards
-            categoryCards.forEach(c => c.classList.remove('active'));
-            // Add active class to clicked card
-            this.classList.add('active');
+    // Only add event listeners if category cards exist
+    if (categoryCards.length > 0) {
+        categoryCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove active class from all category cards
+                categoryCards.forEach(c => c.classList.remove('active'));
+                // Add active class to clicked card
+                this.classList.add('active');
 
-            const selectedCategory = this.getAttribute('data-category');
+                const selectedCategory = this.getAttribute('data-category');
 
-            // Filter articles
-            articleCards.forEach(articleCard => {
-                if (selectedCategory === 'all' || articleCard.getAttribute('data-category') === selectedCategory) {
-                    articleCard.style.display = 'block';
-                    articleCard.style.opacity = '0';
-                    articleCard.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        articleCard.style.opacity = '1';
-                        articleCard.style.transform = 'translateY(0)';
-                    }, 100);
-                } else {
-                    articleCard.style.display = 'none';
-                }
+                // Filter articles
+                articleCards.forEach(articleCard => {
+                    if (selectedCategory === 'all' || articleCard.getAttribute('data-category') === selectedCategory) {
+                        articleCard.style.display = 'block';
+                        articleCard.style.opacity = '0';
+                        articleCard.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            articleCard.style.opacity = '1';
+                            articleCard.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        articleCard.style.display = 'none';
+                    }
+                });
             });
         });
-    });
+    }
 
     // Newsletter signup functionality
     const newsletterForm = document.querySelector('.newsletter-form');
@@ -62,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <h3>Successfully Subscribed!</h3>
                 <p>Thank you for subscribing to our newsletter. You'll receive the latest sailing articles, events, and tips directly in your inbox.</p>
-                <button class="btn btn-primary" onclick="this.parentElement.parentElement.remove()">Close</button>
+                <button class="btn btn-primary" onclick="removeModal(this.closest('.newsletter-success-modal'))">Close</button>
             </div>
         `;
 
@@ -70,43 +79,53 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Article card hover effects
-    articleCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
+    if (articleCards.length > 0) {
+        articleCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
 
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
         });
-    });
+    }
 
     // Read more functionality
     const readMoreLinks = document.querySelectorAll('.read-more');
-    readMoreLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const articleCard = this.closest('.article-card');
-            const articleTitle = articleCard.querySelector('h3').textContent;
-            
-                         // Check if it's the lake sailing article
-             if (articleTitle.includes('Lake Sailing') || articleTitle.includes('Mastering Lake Sailing')) {
-                 showLakeSailingArticle();
-             } else if (articleTitle.includes('Different Conditions')) {
-                 showConditionsArticle();
-             } else if (articleTitle.includes('Starting Strong')) {
-                 showStartingArticle();
-             } else if (articleTitle.includes('Racing Strategy Fundamentals')) {
-                 showStrategyArticle();
-             } else if (articleTitle.includes('C420 Maintenance Basics')) {
-                 showC420MaintenanceArticle();
-             } else if (articleTitle.includes('Fundamental Rules of Collegiate Racing')) {
-                 showRacingRulesArticle();
-             } else {
-                 // In a real application, this would navigate to the full article
-                 showArticlePreview(articleTitle);
-             }
+    if (readMoreLinks.length > 0) {
+        readMoreLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const articleCard = this.closest('.article-card');
+                const articleTitle = articleCard.querySelector('h3').textContent;
+                
+                             // Check if it's the lake sailing article
+                 if (articleTitle.includes('Lake Sailing') || articleTitle.includes('Mastering Lake Sailing')) {
+                     showLakeSailingArticle();
+                 } else if (articleTitle.includes('Different Conditions')) {
+                     showConditionsArticle();
+                 } else if (articleTitle.includes('Starting Strong')) {
+                     showStartingArticle();
+                 } else if (articleTitle.includes('Racing Strategy Fundamentals')) {
+                     showStrategyArticle();
+                 } else if (articleTitle.includes('C420 Maintenance Basics')) {
+                     showC420MaintenanceArticle();
+                 } else if (articleTitle.includes('Fundamental Rules of Collegiate Racing')) {
+                     showRacingRulesArticle();
+                 } else if (articleTitle.includes('Reading Weather Patterns')) {
+                     showWeatherPatternsArticle();
+                 } else if (articleTitle.includes('Advanced Sailing Techniques')) {
+                     showAdvancedTechniquesArticle();
+                 } else if (articleTitle.includes('Essential Safety Equipment')) {
+                     showSafetyEquipmentArticle();
+                 } else {
+                     // In a real application, this would navigate to the full article
+                     showArticlePreview(articleTitle);
+                 }
+            });
         });
-    });
+    }
 
          // Global function for C420 maintenance article
      window.showC420MaintenanceArticle = function() {
@@ -115,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
          articleModal.innerHTML = `
              <div class="article-preview-content">
                  <div class="article-preview-header">
-                     <h3>C420 Maintenance Basics</h3>
+                     <h3 style="color: var(--primary-maroon);">C420 Maintenance Basics</h3>
                      <button class="modal-close">&times;</button>
                  </div>
                  <div class="article-preview-body">
@@ -178,12 +197,12 @@ document.addEventListener('DOMContentLoaded', function() {
          // Close modal functionality
          const closeBtn = articleModal.querySelector('.modal-close');
          closeBtn.addEventListener('click', () => {
-             document.body.removeChild(articleModal);
+             removeModal(articleModal);
          });
 
          articleModal.addEventListener('click', (e) => {
              if (e.target === articleModal) {
-                 document.body.removeChild(articleModal);
+                 removeModal(articleModal);
              }
          });
      };
@@ -195,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
          articleModal.innerHTML = `
              <div class="article-preview-content">
                  <div class="article-preview-header">
-                     <h3>Fundamental Rules of Collegiate Racing</h3>
+                     <h3 style="color: var(--primary-maroon);">Fundamental Rules of Collegiate Racing</h3>
                      <button class="modal-close">&times;</button>
                  </div>
                  <div class="article-preview-body">
@@ -260,12 +279,12 @@ document.addEventListener('DOMContentLoaded', function() {
          // Close modal functionality
          const closeBtn = articleModal.querySelector('.modal-close');
          closeBtn.addEventListener('click', () => {
-             document.body.removeChild(articleModal);
+             removeModal(articleModal);
          });
 
          articleModal.addEventListener('click', (e) => {
              if (e.target === articleModal) {
-                 document.body.removeChild(articleModal);
+                 removeModal(articleModal);
              }
          });
      };
@@ -277,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
          articleModal.innerHTML = `
              <div class="article-preview-content">
                  <div class="article-preview-header">
-                     <h3>Racing Strategy Fundamentals</h3>
+                     <h3 style="color: var(--primary-maroon);">Racing Strategy Fundamentals</h3>
                      <button class="modal-close">&times;</button>
                  </div>
                  <div class="article-preview-body">
@@ -335,12 +354,12 @@ document.addEventListener('DOMContentLoaded', function() {
          // Close modal functionality
          const closeBtn = articleModal.querySelector('.modal-close');
          closeBtn.addEventListener('click', () => {
-             document.body.removeChild(articleModal);
+             removeModal(articleModal);
          });
 
          articleModal.addEventListener('click', (e) => {
              if (e.target === articleModal) {
-                 document.body.removeChild(articleModal);
+                 removeModal(articleModal);
              }
          });
      };
@@ -352,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
          articleModal.innerHTML = `
              <div class="article-preview-content">
                  <div class="article-preview-header">
-                     <h3>Starting Strong in Shifty Air</h3>
+                     <h3 style="color: var(--primary-maroon);">Starting Strong in Shifty Air</h3>
                      <button class="modal-close">&times;</button>
                  </div>
                  <div class="article-preview-body">
@@ -388,12 +407,12 @@ document.addEventListener('DOMContentLoaded', function() {
          // Close modal functionality
          const closeBtn = articleModal.querySelector('.modal-close');
          closeBtn.addEventListener('click', () => {
-             document.body.removeChild(articleModal);
+             removeModal(articleModal);
          });
 
          articleModal.addEventListener('click', (e) => {
              if (e.target === articleModal) {
-                 document.body.removeChild(articleModal);
+                 removeModal(articleModal);
              }
          });
      };
@@ -405,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
          articleModal.innerHTML = `
              <div class="article-preview-content">
                  <div class="article-preview-header">
-                     <h3>Different Conditions, Different Sailing</h3>
+                     <h3 style="color: var(--primary-maroon);">Different Conditions, Different Sailing</h3>
                      <button class="modal-close">&times;</button>
                  </div>
                  <div class="article-preview-body">
@@ -441,12 +460,12 @@ document.addEventListener('DOMContentLoaded', function() {
          // Close modal functionality
          const closeBtn = articleModal.querySelector('.modal-close');
          closeBtn.addEventListener('click', () => {
-             document.body.removeChild(articleModal);
+             removeModal(articleModal);
          });
 
          articleModal.addEventListener('click', (e) => {
              if (e.target === articleModal) {
-                 document.body.removeChild(articleModal);
+                 removeModal(articleModal);
              }
          });
      };
@@ -458,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
         articleModal.innerHTML = `
             <div class="article-preview-content">
                 <div class="article-preview-header">
-                    <h3>Collegiate Racing: Mastering Lake Sailing</h3>
+                    <h3 style="color: var(--primary-maroon);">Collegiate Racing: Mastering Lake Sailing</h3>
                     <button class="modal-close">&times;</button>
                 </div>
                 <div class="article-preview-body">
@@ -494,12 +513,262 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close modal functionality
         const closeBtn = articleModal.querySelector('.modal-close');
         closeBtn.addEventListener('click', () => {
-            document.body.removeChild(articleModal);
+            removeModal(articleModal);
         });
 
         articleModal.addEventListener('click', (e) => {
             if (e.target === articleModal) {
-                document.body.removeChild(articleModal);
+                removeModal(articleModal);
+            }
+        });
+    };
+
+     // Global function for weather patterns article
+     window.showWeatherPatternsArticle = function() {
+        const articleModal = document.createElement('div');
+        articleModal.className = 'article-preview-modal';
+        articleModal.innerHTML = `
+            <div class="article-preview-content">
+                <div class="article-preview-header">
+                    <h3 style="color: var(--primary-maroon);">Reading Wind Patterns: Lessons for Collegiate C420 Sailors</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="article-preview-body">
+                    <div class="article-meta">
+                        <span class="article-date">August 10, 2025</span>
+                        <span class="article-category">Safety</span>
+                    </div>
+                    
+                    <p><strong>As a coach working with sailors who aspire to the Olympic level, I've learned that the single greatest separator in competitive doublehanded dinghy sailing is not boat handling, athleticism, or even tactics—it's the ability to read the wind.</strong> At the collegiate level, where most regattas are sailed in C420s, success comes down to anticipation. You don't just react to what's in front of you—you position your boat to meet the wind that's about to arrive.</p>
+                    
+                    <h4>Start with the Big Picture</h4>
+                    <p>When you first arrive at the venue, resist the urge to rig immediately. Spend five minutes looking at the racecourse and surroundings. Ask yourself: Where is the wind coming from relative to the land and water features? Are there trees, buildings, or cliffs that might cause shifts or puffs? Is there cloud cover, sunshine, or thermal activity that could change the breeze throughout the day?</p>
+                    
+                    <p>Good sailors observe the water. Great sailors connect what they see on the water with what they see in the sky and on the shore.</p>
+                    
+                    <h4>Spotting Puffs and Lulls</h4>
+                    <p>In the C420, puffs mean speed—and speed means options. Train your eye to pick out darker patches on the water. That's where wind is compressing the surface. Conversely, lighter, glassier areas signal lulls.</p>
+                    
+                    <p>A common mistake for collegiate sailors is to assume every puff is the same. Instead, look for consistency. Is the breeze marching down in a steady pattern, or are the puffs oscillating back and forth?</p>
+                    
+                    <p><strong>As a rule:</strong> Sail toward pressure when possible. A boat in more wind will almost always beat a boat in less wind, even on the "wrong" shift. Anticipate the angle—not all puffs come straight downwind. Watch how earlier puffs hit other boats before they reach you.</p>
+                    
+                    <h4>Understanding Shifts</h4>
+                    <p>Wind rarely blows straight for long. At the college level, the two most common patterns are oscillating shifts and persistent shifts:</p>
+                    
+                    <p><strong>Oscillating:</strong> The wind swings back and forth around an average direction. Your job is to "play the shifts"—sail on the lifted tack and tack when you get headed.</p>
+                    
+                    <p><strong>Persistent:</strong> The wind slowly but steadily shifts in one direction, often due to a weather system moving through or a thermal building. Here, getting to the correct side early is critical.</p>
+                    
+                    <p>Olympic-level sailors excel at recognizing which pattern is developing. As a collegiate sailor, ask yourself: Is the shift I just got part of a trend, or is it going to come back?</p>
+                    
+                    <h4>Team Communication</h4>
+                    <p>In the C420, both skipper and crew are responsible for wind awareness. I coach crews to keep their eyes up the course, scanning constantly for pressure and shifts, while the skipper manages the boat.</p>
+                    
+                    <p>Communication should be clear and constant: "Puff in three, coming from the right," or "Shift left after this lull." The sooner you process the information, the less rushed your tactical decisions will feel.</p>
+                    
+                    <h4>Building a Routine</h4>
+                    <p>Reading the wind isn't luck—it's a skill. At practice and regattas, I encourage sailors to:</p>
+                    
+                    <ul>
+                        <li>Call puffs early during warm-ups to test your accuracy.</li>
+                        <li>Track oscillations with a compass or visual landmarks to feel the rhythm.</li>
+                        <li>Review between races what you saw and how it played out.</li>
+                    </ul>
+                    
+                    <p>Over time, you'll notice patterns repeat themselves, and you'll begin to trust your instincts.</p>
+                    
+                    <h4>Final Thoughts</h4>
+                    <p>The sailors who win consistently in college sailing are not necessarily the fastest in straight-line boat speed. They are the ones who know what the wind is going to do before their competitors. If you want to take your sailing to the next level, dedicate yourself to learning the language of the wind. It's the one teammate you can't control—but if you can read it better than the rest of the fleet, it will work for you instead of against you.</p>
+                    
+                    <div class="article-preview-actions">
+                        <button class="btn btn-primary" onclick="this.closest('.article-preview-modal').remove()">Close Article</button>
+                        <button class="btn btn-outline" onclick="shareArticle('Reading Wind Patterns: Lessons for Collegiate C420 Sailors')">Share Article</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(articleModal);
+
+        // Close modal functionality
+        const closeBtn = articleModal.querySelector('.modal-close');
+        closeBtn.addEventListener('click', () => {
+            removeModal(articleModal);
+        });
+
+        articleModal.addEventListener('click', (e) => {
+            if (e.target === articleModal) {
+                removeModal(articleModal);
+            }
+        });
+    };
+
+    // Global function for Advanced Sailing Techniques article
+    window.showAdvancedTechniquesArticle = function() {
+        const articleModal = document.createElement('div');
+        articleModal.className = 'article-preview-modal';
+        articleModal.innerHTML = `
+            <div class="article-preview-content">
+                <div class="article-preview-header">
+                    <h3 style="color: var(--primary-maroon);">Advanced Sailing Techniques</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="article-preview-body">
+                    <div class="article-meta">
+                        <span class="article-date">August 10, 2025</span>
+                        <span class="article-category">Techniques</span>
+                    </div>
+                    
+                    <p><strong>Mastering advanced sailing techniques is the key to becoming a competitive sailor.</strong> While basic sailing skills get you on the water, advanced techniques separate the weekend sailors from the racers. These skills require practice, patience, and a deep understanding of how your boat responds to different conditions.</p>
+                    
+                    <h4>1. Perfecting Your Tacking</h4>
+                    <p><strong>Timing is Everything:</strong> The key to a smooth tack is coordinating your movements with the boat's momentum. Begin your turn just before the wind hits your face, and complete the tack before the boat loses too much speed.</p>
+                    
+                    <p><strong>Body Position:</strong> Keep your weight centered and low during the tack. Move smoothly across the boat, maintaining balance throughout the maneuver.</p>
+                    
+                    <p><strong>Sheet Management:</strong> Release the jib sheet just before the bow crosses the wind, then quickly trim the new sheet as the sail fills on the new tack.</p>
+                    
+                    <h4>2. Mastering the Jibe</h4>
+                    <p><strong>Controlled Speed:</strong> Jibing requires more control than tacking. Reduce speed slightly before the jibe to maintain control, especially in stronger winds.</p>
+                    
+                    <p><strong>Boom Control:</strong> Use the mainsheet to control the boom's movement during the jibe. A controlled boom prevents accidental jibes and reduces the risk of injury.</p>
+                    
+                    <p><strong>Weight Distribution:</strong> Shift your weight to the new windward side as the boom comes across, helping to keep the boat flat and stable.</p>
+                    
+                    <h4>3. Sail Trim Optimization</h4>
+                    <p><strong>Upwind Sailing:</strong> Keep the sails flat and tight when sailing upwind. The jib should be trimmed so the telltales flow evenly, and the main should be sheeted in enough to prevent excessive heeling.</p>
+                    
+                    <p><strong>Downwind Sailing:</strong> Ease the sails to catch more wind when sailing downwind. The main can be let out further, and the jib can be flown on the opposite side (wing-on-wing) for maximum speed.</p>
+                    
+                    <p><strong>Reaching:</strong> Find the sweet spot between upwind and downwind trim. The sails should be eased but not so much that they luff.</p>
+                    
+                    <h4>4. Advanced Boat Handling</h4>
+                    <p><strong>Roll Tacking:</strong> Use your body weight to help the boat turn more quickly during tacks. As you begin the tack, roll your weight to windward, then quickly move to the new windward side as the boat comes through the wind.</p>
+                    
+                    <p><strong>Hiking Technique:</strong> Extend your legs and keep your back straight when hiking. This position maximizes your leverage and keeps you comfortable for longer periods.</p>
+                    
+                    <p><strong>Weight Placement:</strong> Position your weight to keep the boat flat and level. In light air, move forward to reduce wetted surface area. In heavy air, move aft to help the bow rise over waves.</p>
+                    
+                    <h4>5. Racing Techniques</h4>
+                    <p><strong>Starting Line Strategy:</strong> Position yourself for a clear start with room to accelerate. Avoid being trapped at the line or forced into a bad position by other boats.</p>
+                    
+                    <p><strong>Mark Roundings:</strong> Plan your approach to marks well in advance. Consider the wind direction, current, and other boats when deciding on your rounding strategy.</p>
+                    
+                    <p><strong>Laylines:</strong> Learn to judge laylines accurately. Sailing too far past the layline wastes time, while tacking too early can leave you short of the mark.</p>
+                    
+                    <p>Remember, these techniques take time to master. Practice each one individually before combining them in racing situations. The best sailors are those who can execute these maneuvers consistently under pressure.</p>
+                    
+                    <div class="article-preview-actions">
+                        <button class="btn btn-primary" onclick="this.closest('.article-preview-modal').remove()">Close Article</button>
+                        <button class="btn btn-outline" onclick="shareArticle('Advanced Sailing Techniques')">Share Article</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(articleModal);
+
+        // Close modal functionality
+        const closeBtn = articleModal.querySelector('.modal-close');
+        closeBtn.addEventListener('click', () => {
+            removeModal(articleModal);
+        });
+
+        articleModal.addEventListener('click', (e) => {
+            if (e.target === articleModal) {
+                removeModal(articleModal);
+            }
+        });
+    };
+
+    // Global function for Essential Safety Equipment article
+    window.showSafetyEquipmentArticle = function() {
+        const articleModal = document.createElement('div');
+        articleModal.className = 'article-preview-modal';
+        articleModal.innerHTML = `
+            <div class="article-preview-content">
+                <div class="article-preview-header">
+                    <h3 style="color: var(--primary-maroon);">Essential Safety Equipment</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="article-preview-body">
+                    <div class="article-meta">
+                        <span class="article-date">November 10, 2024</span>
+                        <span class="article-category">Safety</span>
+                    </div>
+                    
+                    <p><strong>Safety should always be your top priority when sailing.</strong> Having the right safety equipment on board can mean the difference between a minor inconvenience and a serious emergency. This guide covers the essential safety equipment every sailor should have, whether you're racing or cruising.</p>
+                    
+                    <h4>1. Personal Flotation Devices (PFDs)</h4>
+                    <p><strong>Type I PFDs:</strong> These are the most buoyant and are designed for offshore use. They're bulky but provide the most protection in rough conditions.</p>
+                    
+                    <p><strong>Type III PFDs:</strong> These are the most common for recreational sailing and racing. They're comfortable to wear and allow for good mobility while providing adequate buoyancy.</p>
+                    
+                    <p><strong>Inflatable PFDs:</strong> These are compact and comfortable but require regular maintenance and inspection. They're popular among experienced sailors.</p>
+                    
+                    <p><strong>Important:</strong> Always wear your PFD when on the water, especially in cold water or when sailing alone.</p>
+                    
+                    <h4>2. Communication Equipment</h4>
+                    <p><strong>VHF Radio:</strong> Essential for communicating with other boats, marinas, and emergency services. Make sure you know how to use it and have the proper licenses if required.</p>
+                    
+                    <p><strong>Cell Phone:</strong> Keep your phone in a waterproof case and ensure it's fully charged before heading out. Consider bringing a portable charger.</p>
+                    
+                    <p><strong>Emergency Beacon:</strong> For offshore sailing, consider carrying an EPIRB (Emergency Position Indicating Radio Beacon) or PLB (Personal Locator Beacon).</p>
+                    
+                    <h4>3. Navigation and Signaling</h4>
+                    <p><strong>Compass:</strong> A reliable compass is essential for navigation, especially when electronic devices fail.</p>
+                    
+                    <p><strong>Flares:</strong> Carry both handheld and aerial flares for emergency signaling. Check expiration dates regularly.</p>
+                    
+                    <p><strong>Whistle:</strong> A simple but effective way to signal for help. Attach it to your PFD.</p>
+                    
+                    <p><strong>Mirror:</strong> A signaling mirror can be used to attract attention during daylight hours.</p>
+                    
+                    <h4>4. First Aid and Emergency</h4>
+                    <p><strong>First Aid Kit:</strong> Stock it with bandages, antiseptic, pain relievers, and any personal medications. Include a first aid manual.</p>
+                    
+                    <p><strong>Emergency Blanket:</strong> Lightweight and compact, these can help prevent hypothermia in emergency situations.</p>
+                    
+                    <p><strong>Knife:</strong> A sharp, accessible knife can be crucial for cutting lines or freeing yourself from entanglements.</p>
+                    
+                    <p><strong>Flashlight:</strong> Waterproof flashlight with extra batteries for emergency lighting.</p>
+                    
+                    <h4>5. Weather and Safety Monitoring</h4>
+                    <p><strong>Weather Radio:</strong> Stay informed about changing weather conditions.</p>
+                    
+                    <p><strong>Barometer:</strong> Monitor atmospheric pressure changes that can indicate approaching storms.</p>
+                    
+                    <p><strong>Anemometer:</strong> Measure wind speed to make informed decisions about when to reef or seek shelter.</p>
+                    
+                    <h4>6. Maintenance and Inspection</h4>
+                    <p><strong>Regular Checks:</strong> Inspect all safety equipment regularly, especially before long trips or races.</p>
+                    
+                    <p><strong>Expiration Dates:</strong> Keep track of expiration dates for flares, fire extinguishers, and other time-sensitive equipment.</p>
+                    
+                    <p><strong>Proper Storage:</strong> Store equipment in accessible locations and protect it from moisture and damage.</p>
+                    
+                    <p>Remember, having safety equipment is only part of the equation. Knowing how to use it properly and maintaining it regularly is equally important. Take the time to practice with your equipment and ensure everyone on board knows where it's located and how to use it.</p>
+                    
+                    <div class="article-preview-actions">
+                        <button class="btn btn-primary" onclick="this.closest('.article-preview-modal').remove()">Close Article</button>
+                        <button class="btn btn-outline" onclick="shareArticle('Essential Safety Equipment')">Share Article</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(articleModal);
+
+        // Close modal functionality
+        const closeBtn = articleModal.querySelector('.modal-close');
+        closeBtn.addEventListener('click', () => {
+            removeModal(articleModal);
+        });
+
+        articleModal.addEventListener('click', (e) => {
+            if (e.target === articleModal) {
+                removeModal(articleModal);
             }
         });
     };
@@ -533,7 +802,7 @@ document.addEventListener('DOMContentLoaded', function() {
         previewModal.innerHTML = `
             <div class="article-preview-content">
                 <div class="article-preview-header">
-                    <h3>${title}</h3>
+                    <h3 style="color: var(--primary-maroon);">${title}</h3>
                     <button class="modal-close">&times;</button>
                 </div>
                 <div class="article-preview-body">
@@ -552,12 +821,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close modal functionality
         const closeBtn = previewModal.querySelector('.modal-close');
         closeBtn.addEventListener('click', () => {
-            document.body.removeChild(previewModal);
+            removeModal(previewModal);
         });
 
         previewModal.addEventListener('click', (e) => {
             if (e.target === previewModal) {
-                document.body.removeChild(previewModal);
+                removeModal(previewModal);
             }
         });
     }
@@ -577,345 +846,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add CSS for articles page
-const style = document.createElement('style');
-style.textContent = `
-    .article-categories {
-        padding: var(--section-padding);
-        background: var(--light-gray);
-    }
 
-    .categories-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .category-card {
-        background: var(--white);
-        padding: 1.5rem;
-        border-radius: 12px;
-        text-align: center;
-        cursor: pointer;
-        transition: var(--transition);
-        border: 2px solid transparent;
-    }
-
-    .category-card:hover,
-    .category-card.active {
-        border-color: var(--primary-maroon);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .category-card i {
-        font-size: 2rem;
-        color: var(--primary-maroon);
-        margin-bottom: 1rem;
-    }
-
-    .category-card h3 {
-        color: var(--primary-maroon);
-        margin-bottom: 0;
-    }
-
-    .featured-article {
-        padding: var(--section-padding);
-        background: var(--white);
-    }
-
-    .featured-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .featured-image img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .featured-text h2 {
-        color: var(--primary-maroon);
-        margin-bottom: 1rem;
-    }
-
-    .featured-text p {
-        color: var(--gray);
-        margin-bottom: 1.5rem;
-    }
-
-    .articles-section {
-        padding: var(--section-padding);
-        background: var(--light-gray);
-    }
-
-    .articles-section h2 {
-        text-align: center;
-        color: var(--primary-maroon);
-        margin-bottom: 3rem;
-    }
-
-    .articles-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-    }
-
-    .article-card {
-        background: var(--white);
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        transition: var(--transition);
-    }
-
-    .article-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .article-image {
-        height: 200px;
-        overflow: hidden;
-    }
-
-    .article-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-    }
-
-    .article-card:hover .article-image img {
-        transform: scale(1.05);
-    }
-
-    .article-content {
-        padding: 1.5rem;
-    }
-
-    .article-meta {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-    }
-
-    .article-date {
-        color: var(--gray);
-    }
-
-    .article-category {
-        background: var(--light-maroon);
-        color: var(--primary-maroon);
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-weight: 500;
-    }
-
-    .article-content h3 {
-        color: var(--primary-maroon);
-        margin-bottom: 0.5rem;
-    }
-
-    .read-more {
-        color: var(--primary-maroon);
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: var(--transition);
-    }
-
-    .read-more:hover {
-        color: var(--secondary-maroon);
-    }
-
-    .newsletter-section {
-        padding: var(--section-padding);
-        background: linear-gradient(135deg, var(--primary-maroon), var(--secondary-maroon));
-        color: var(--white);
-        text-align: center;
-    }
-
-    .newsletter-content h2 {
-        color: var(--white);
-        margin-bottom: 1rem;
-    }
-
-    .newsletter-content p {
-        color: var(--light-gray);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .newsletter-form {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-    .newsletter-form .form-group {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .newsletter-form input {
-        flex: 1;
-        min-width: 250px;
-        padding: 12px;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-    }
-
-    .newsletter-form button {
-        padding: 12px 24px;
-        border: none;
-        border-radius: 8px;
-        background: var(--white);
-        color: var(--primary-maroon);
-        font-weight: 600;
-        cursor: pointer;
-        transition: var(--transition);
-    }
-
-    .newsletter-form button:hover {
-        background: var(--light-gray);
-    }
-
-    .newsletter-success-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-    }
-
-    .newsletter-success-content {
-        background: var(--white);
-        border-radius: 12px;
-        padding: 2rem;
-        text-align: center;
-        max-width: 400px;
-        width: 90%;
-    }
-
-    .success-icon {
-        font-size: 4rem;
-        color: var(--primary-maroon);
-        margin-bottom: 1rem;
-    }
-
-    .article-preview-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-    }
-
-    .article-preview-content {
-        background: var(--white);
-        border-radius: 12px;
-        padding: 2rem;
-        max-width: 600px;
-        width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-
-    .article-preview-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid var(--light-gray);
-        padding-bottom: 1rem;
-    }
-
-    .modal-close {
-        background: none;
-        border: none;
-        font-size: 2rem;
-        cursor: pointer;
-        color: var(--gray);
-    }
-
-    .article-preview-body {
-        margin-bottom: 2rem;
-        line-height: 1.6;
-    }
-
-    .article-preview-body h4 {
-        color: var(--primary-maroon);
-        margin-top: 1.5rem;
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-    }
-
-    .article-preview-body p {
-        margin-bottom: 1rem;
-        color: var(--gray);
-    }
-
-    .article-preview-body strong {
-        color: var(--primary-maroon);
-    }
-
-    .article-preview-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-        .featured-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .categories-grid {
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        }
-
-        .articles-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .newsletter-form .form-group {
-            flex-direction: column;
-        }
-
-        .newsletter-form input {
-            min-width: auto;
-        }
-
-        .article-preview-actions {
-            flex-direction: column;
-        }
-    }
-`;
-document.head.appendChild(style);
