@@ -105,188 +105,62 @@
     <!-- Donation Options -->
     <section class="donation-options">
         <div class="container">
-            <h2>Choose Your Impact</h2>
-            <div class="donation-tiers">
-                <div class="donation-tier">
-                    <div class="tier-header">
-                        <h3>Supporter</h3>
-                        <div class="tier-amount">$25</div>
-                    </div>
-                    <ul class="tier-benefits">
-                        <li><i class="fas fa-check"></i> Recognition on our website</li>
-                        <li><i class="fas fa-check"></i> Quarterly newsletter updates</li>
-                        <li><i class="fas fa-check"></i> Invitation to annual banquet</li>
-                    </ul>
-                    <button class="btn btn-primary donate-btn" data-amount="25">Donate $25</button>
-                </div>
-                
-                <div class="donation-tier featured">
-                    <div class="tier-badge">Most Popular</div>
-                    <div class="tier-header">
-                        <h3>Patron</h3>
-                        <div class="tier-amount">$100</div>
-                    </div>
-                    <ul class="tier-benefits">
-                        <li><i class="fas fa-check"></i> All Supporter benefits</li>
-                        <li><i class="fas fa-check"></i> Personalized thank you letter</li>
-                        <li><i class="fas fa-check"></i> Name on boat dedication plaque</li>
-                        <li><i class="fas fa-check"></i> Priority event invitations</li>
-                    </ul>
-                    <button class="btn btn-primary donate-btn" data-amount="100">Donate $100</button>
-                </div>
-                
-                <div class="donation-tier">
-                    <div class="tier-header">
-                        <h3>Champion</h3>
-                        <div class="tier-amount">$250</div>
-                    </div>
-                    <ul class="tier-benefits">
-                        <li><i class="fas fa-check"></i> All Patron benefits</li>
-                        <li><i class="fas fa-check"></i> VIP regatta access</li>
-                        <li><i class="fas fa-check"></i> Custom sailing gear</li>
-                        <li><i class="fas fa-check"></i> Annual sailing day with team</li>
-                    </ul>
-                    <button class="btn btn-primary donate-btn" data-amount="250">Donate $250</button>
-                </div>
-                
-                <div class="donation-tier">
-                    <div class="tier-header">
-                        <h3>Legacy</h3>
-                        <div class="tier-amount">$500+</div>
-                    </div>
-                    <ul class="tier-benefits">
-                        <li><i class="fas fa-check"></i> All Champion benefits</li>
-                        <li><i class="fas fa-check"></i> Boat naming rights</li>
-                        <li><i class="fas fa-check"></i> Lifetime honorary membership</li>
-                        <li><i class="fas fa-check"></i> Dedicated recognition area</li>
-                    </ul>
-                    <button class="btn btn-primary donate-btn" data-amount="500">Donate $500+</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Custom Donation -->
-    <section class="custom-donation">
-        <div class="container">
-            <div class="custom-donation-content">
-                <h2>Custom Donation Amount</h2>
-                <p>Every contribution makes a difference. Choose an amount that works for you.</p>
-                <div class="donation-form">
-                    <div class="amount-input">
-                        <label for="custom-amount">Amount ($)</label>
-                        <input type="number" id="custom-amount" min="1" step="1" placeholder="Enter amount">
-                    </div>
-                    <button class="btn btn-primary" id="custom-donate-btn">Make Donation</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Donation Modal -->
-    <div id="donation-modal" class="donation-modal">
-        <div class="donation-modal-content">
-            <div class="modal-header">
-                <h3>Complete Your Donation</h3>
-                <button class="modal-close" id="close-donation-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="donation-summary">
-                    <h4>Donation Summary</h4>
-                    <div class="summary-item">
-                        <span>Amount:</span>
-                        <span id="modal-amount">$0</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Processing Fee:</span>
-                        <span id="modal-fee">$0</span>
-                    </div>
-                    <div class="summary-item total">
-                        <span>Total:</span>
-                        <span id="modal-total">$0</span>
-                    </div>
-                </div>
-                
-                <form id="donation-form" class="donation-form-modal">
-                    <div class="form-group">
-                        <label for="donor-name">Full Name *</label>
-                        <input type="text" id="donor-name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="donor-email">Email Address *</label>
-                        <input type="email" id="donor-email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="donor-phone">Phone Number</label>
-                        <input type="tel" id="donor-phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="donor-message">Message (Optional)</label>
-                        <textarea id="donor-message" rows="3" placeholder="Share why you're supporting Aggie Sailing..."></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="anonymous-donation">
-                            <span class="checkmark"></span>
-                            Make this donation anonymous
-                        </label>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="newsletter-signup">
-                            <span class="checkmark"></span>
-                            Subscribe to our newsletter for updates
-                        </label>
-                    </div>
-                    
-                    <div class="payment-section">
-                        <h4>Payment Information</h4>
-                        <div class="form-group">
-                            <label for="card-number">Card Number *</label>
-                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+            <h2>Support Aggie Sailing</h2>
+            <div class="donation-content">
+                <div class="donation-info">
+                    <h3>Make a Donation</h3>
+                    <p>Your donation helps us maintain our fleet, provide training programs, and grow the sport of sailing at Texas A&M University. All donations are processed securely through the Texas A&M Foundation.</p>
+                    <div class="donation-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-ship"></i>
+                            <span>Fleet Maintenance</span>
                         </div>
-                        
-                        <div class="card-details">
-                            <div class="form-group">
-                                <label for="expiry-date">Expiry Date *</label>
-                                <input type="text" id="expiry-date" placeholder="MM/YY" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="cvv">CVV *</label>
-                                <input type="text" id="cvv" placeholder="123" required>
-                            </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Training Programs</span>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="billing-zip">Billing ZIP Code *</label>
-                            <input type="text" id="billing-zip" required>
+                        <div class="benefit-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Competition Support</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-users"></i>
+                            <span>Community Growth</span>
                         </div>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-large">
-                        <i class="fas fa-lock"></i>
-                        Complete Donation
+                </div>
+                <div class="donation-action">
+                    <button class="btn btn-primary btn-large" id="donate-btn">
+                        <i class="fas fa-heart"></i>
+                        Donate Now
                     </button>
-                </form>
+                    <p class="donation-note">Click to be redirected to the Texas A&M Foundation secure donation portal</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Success Modal -->
-    <div id="success-modal" class="success-modal">
-        <div class="success-modal-content">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
+    <!-- Donation Popup -->
+    <div id="donation-popup" class="donation-popup">
+        <div class="donation-popup-content">
+            <div class="popup-header">
+                <h3>Donate to Aggie Sailing</h3>
+                <button class="popup-close" id="close-donation-popup">&times;</button>
             </div>
-            <h3>Thank You!</h3>
-            <p>Your donation has been successfully processed. You will receive a confirmation email shortly.</p>
-            <p class="donation-id">Donation ID: <span id="donation-id"></span></p>
-            <button class="btn btn-primary" id="close-success-modal">Close</button>
+            <div class="popup-body">
+                <div class="popup-icon">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+                <h4>Redirecting to Texas A&M Foundation</h4>
+                <p>You will be redirected to the secure Texas A&M Foundation donation portal where you can make your contribution to the Aggie Sailing Team.</p>
+                <div class="popup-actions">
+                    <button class="btn btn-primary" id="proceed-donation">
+                        <i class="fas fa-external-link-alt"></i>
+                        Proceed to Donation
+                    </button>
+                    <button class="btn btn-outline" id="cancel-donation">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -347,4 +221,5 @@
     <script src="js/donations.js"></script>
 </body>
 </html>
+
 
