@@ -198,7 +198,20 @@ document.addEventListener('DOMContentLoaded', function() {
         { src: "assets/unz_images/Tezza-6052.JPG", alt: "Tezza 6052", category: "2023", title: "Tezza 6052", description: "Sailing scenery" },
         { src: "assets/unz_images/Tezza-6792.JPG", alt: "Tezza 6792", category: "2023", title: "Tezza 6792", description: "Sailing scenery" },
         { src: "assets/unz_images/Tezza-9217.JPG", alt: "Tezza 9217", category: "2023", title: "Tezza 9217", description: "Sailing scenery" },
-        { src: "assets/unz_images/Tezza-9323.JPG", alt: "Tezza 9323", category: "2023", title: "Tezza 9323", description: "Sailing scenery" }
+        { src: "assets/unz_images/Tezza-9323.JPG", alt: "Tezza 9323", category: "2023", title: "Tezza 9323", description: "Sailing scenery" },
+        
+        // New images added from unz_images folder
+        { src: "assets/unz_images/2008-10-17 - Shiner and Corpus (3).jpg", alt: "Shiner and Corpus 2008", category: "2008", title: "Shiner and Corpus", description: "Sailing event in Shiner and Corpus Christi" },
+        { src: "assets/unz_images/2009-03-06 - Barnyard Bazzare (10).JPG", alt: "Barnyard Bazzare 2009", category: "2009", title: "Barnyard Bazzare", description: "Barnyard Bazzare sailing event" },
+        { src: "assets/unz_images/2009-03-06 - Barnyard Bazzare (15).jpg", alt: "Barnyard Bazzare 2009", category: "2009", title: "Barnyard Bazzare", description: "Barnyard Bazzare sailing event" },
+        { src: "assets/unz_images/2009-03-06 - Barnyard Bazzare (16).JPG", alt: "Barnyard Bazzare 2009", category: "2009", title: "Barnyard Bazzare", description: "Barnyard Bazzare sailing event" },
+        { src: "assets/unz_images/2009-09-05 - Alumni Regatta (2).JPG", alt: "Alumni Regatta 2009", category: "2009", title: "Alumni Regatta", description: "Annual alumni regatta event" },
+        { src: "assets/unz_images/2009-09-12 - SMU Regatta (2).jpg", alt: "SMU Regatta 2009", category: "2009", title: "SMU Regatta", description: "Regatta competition against SMU" },
+        { src: "assets/unz_images/2010-10-29 - Aggie Fall (7).jpg", alt: "Aggie Fall 2010", category: "2010", title: "Aggie Fall", description: "Aggie Fall sailing event" },
+        { src: "assets/unz_images/2010-10-29 - Aggie Fall (8).jpg", alt: "Aggie Fall 2010", category: "2010", title: "Aggie Fall", description: "Aggie Fall sailing event" },
+        { src: "assets/unz_images/2010-10-29 - Aggie Fall (13).jpg", alt: "Aggie Fall 2010", category: "2010", title: "Aggie Fall", description: "Aggie Fall sailing event" },
+        { src: "assets/unz_images/2010-10-29 - Aggie Fall (32).jpg", alt: "Aggie Fall 2010", category: "2010", title: "Aggie Fall", description: "Aggie Fall sailing event" },
+        { src: "assets/unz_images/2012-04-26 - Sailing Team & tu Baseball Game (1).JPG", alt: "Sailing Team & TU Baseball Game 2012", category: "2012", title: "Sailing Team & TU Baseball Game", description: "Sailing team at TU baseball game" }
     ];
 
     // Gallery filtering variables
