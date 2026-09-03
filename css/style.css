@@ -3805,7 +3805,34 @@ img {
 
 /* Donation Options */
 .donation-options {
-    padding: 60px 0;
+    padding: 100px 0 140px;
+}
+
+.donation-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+.donation-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: var(--light-gray);
+    border-radius: var(--border-radius-lg);
+}
+
+.donation-action .btn {
+    margin: 0 auto;
+}
+
+.donation-note {
+    max-width: 320px;
+    margin: 1rem auto 0;
 }
 
 .donation-options h2 {
@@ -4221,6 +4248,15 @@ img {
 @media (max-width: 768px) {
     .page-header-content h1 {
         font-size: 2.5rem;
+    }
+
+    .donation-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .donation-action {
+        padding: 1.5rem;
     }
     
     .donation-tiers {
