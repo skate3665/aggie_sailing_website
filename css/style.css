@@ -392,7 +392,7 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.18);
     z-index: 1;
     pointer-events: none;
 }
@@ -422,11 +422,11 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/unz_images/match_race_team_2011.jpeg');
+    background-image: url('../assets/images/homepage.JPG');
     background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
 }
 
 .hero-content {
@@ -446,12 +446,12 @@ p {
     left: -20px;
     right: -20px;
     bottom: -20px;
-    background: var(--glass-bg);
+    background: rgba(20, 20, 20, 0.15);
     backdrop-filter: var(--backdrop-blur);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--border-radius-lg);
     z-index: -1;
-    opacity: 0.3;
+    opacity: 0.75;
 }
 
 .hero-text h1 {
@@ -1668,6 +1668,18 @@ p {
     font-weight: 500;
 }
 
+.event-category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--primary-maroon);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
 .event-content {
     padding: 1.5rem;
 }
@@ -1688,6 +1700,15 @@ p {
 .event-location i {
     margin-right: 0.5rem;
     color: var(--primary-maroon);
+}
+
+.events-loading,
+.no-events-message {
+    color: var(--gray);
+    font-size: 1rem;
+    text-align: center;
+    padding: 2rem 0;
+    grid-column: 1 / -1;
 }
 
 .events-cta {
@@ -3560,11 +3581,6 @@ img {
     }
 }
 
-/* Calendar Section */
-.event-calendar {
-    padding: var(--section-padding);
-    background: var(--light-gray);
-}
 
 .calendar-wrapper {
     max-width: 1000px;
@@ -3578,6 +3594,7 @@ img {
     padding-bottom: 75%; /* 4:3 aspect ratio */
     overflow: hidden;
     border-radius: var(--border-radius);
+    border: 2px solid var(--primary-maroon);
     box-shadow: var(--shadow-medium);
 }
 
@@ -3729,14 +3746,6 @@ img {
     line-height: 1.6;
 }
 
-/* Donations Page Styles */
-.page-header {
-    background: linear-gradient(135deg, var(--primary-maroon) 0%, var(--secondary-maroon) 100%);
-    color: var(--white);
-    padding: var(--section-padding);
-    text-align: center;
-}
-
 .page-header-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -3752,7 +3761,7 @@ img {
 
 /* Impact Section */
 .impact-section {
-    padding: var(--section-padding);
+    padding: 60px 0;
     background: var(--light-gray);
 }
 
@@ -3760,7 +3769,7 @@ img {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .impact-card {
@@ -3829,7 +3838,7 @@ img {
 .donation-options h2 {
     text-align: center;
     color: var(--primary-maroon);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 2.5rem;
 }
 

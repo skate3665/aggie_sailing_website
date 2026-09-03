@@ -36,9 +36,6 @@
                     <a href="events.html" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="articles.html" class="nav-link">Articles</a>
-                </li>
-                <li class="nav-item">
                     <a href="gallery.html" class="nav-link">Gallery</a>
                 </li>
                 <li class="nav-item">
@@ -59,7 +56,6 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-video-container">
-            <div id="hero-video"></div>
             <div class="hero-fallback-image"></div>
         </div>
         <div class="hero-content">
@@ -98,116 +94,11 @@
     <section class="featured-events">
         <div class="container">
             <h2>Upcoming Events</h2>
-            <div class="events-grid">
-                <div class="event-card" data-category="Recruitment">
-                    <div class="event-image">
-                        <img src="assets/images/recapalooza.png" alt="Rec-a-Palooza" >
-                        <div class="event-date">
-                            <span class="day">24</span>
-                            <span class="month">AUG</span>
-                        </div>
-                        <div class="event-category">Racing</div>
-                    </div>
-                    <div class="event-content">
-                        <h3>Rec-a-Palooza</h3>
-                        <p class="event-time"><i class="fas fa-clock"></i> 1:00 PM - 4:00 PM</p>
-                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> SREC </p>
-                        <p>Learn more about the club from its leaders at Rec-a-Palooza!</p>
-                        <div class="event-details">
-                            <span class="event-type">Recruitment</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Learn More</a>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-image">
-                        <img src="assets/images/grilling-artsy.JPG" alt="Social event">
-                        <div class="event-date">
-                            <span class="day">1</span>
-                            <span class="month">SEPT</span>
-                        </div>
-                    </div>
-                    <div class="event-content">
-                        <h3>Try Out Sailing Day</h3>
-                        <p class="event-time"><i class="fas fa-clock"></i> 3:00 PM - 7:00 PM</p>
-                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Lake Bryan </p>
-                        <p>Give sailing a try! Food, drinks, and the water! A perfect day of bbq and fun to connect with the sailing community.</p>
-                        <a href="events.html" class="btn btn-outline">Learn More</a>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-image">
-                        <img src="assets/images/hands-artsy.JPG" alt="Training session">
-                        <div class="event-date">
-                            <span class="day">02</span>
-                            <span class="month">SEPT</span>
-                        </div>
-                    </div>
-                    <div class="event-content">
-                        <h3>First Practice for New Members</h3>
-                        <p class="event-time"><i class="fas fa-clock"></i> 5:00 PM - 8:00 PM</p>
-                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Training Center</p>
-                        <p>New to sailing? Join our first practice for new members!</p>
-                        <a href="events.html" class="btn btn-outline">Learn More</a>
-                    </div>
-                </div>
+            <div id="home-upcoming-events" class="events-grid">
+                <p class="events-loading">Loading upcoming events&hellip;</p>
             </div>
             <div class="events-cta">
                 <a href="events.html" class="btn btn-primary">View All Events</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Latest Articles -->
-    <section class="latest-articles">
-        <div class="container">
-            <h2>Latest Articles</h2>
-            <div class="articles-grid">
-                <article class="article-card">
-                    <div class="article-image">
-                        <img src="assets/images/drew-closeup2.jpg" alt="Racing article">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-date">December 10, 2024</span>
-                            <span class="article-category">Racing</span>
-                        </div>
-                        <h3>Tips for Your First Race</h3>
-                        <p>Everything you need to know to prepare for your first sailing race, from equipment to strategy.</p>
-                        <a href="articles.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                <article class="article-card">
-                    <div class="article-image">
-                        <img src="assets/images/ryan-w-megaphone.jpeg" alt="Weather article">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-date">December 5, 2024</span>
-                            <span class="article-category">Safety</span>
-                        </div>
-                        <h3>Reading Weather Patterns</h3>
-                        <p>Learn how to interpret weather forecasts and wind patterns for safer, more enjoyable sailing.</p>
-                        <a href="articles.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                <article class="article-card">
-                    <div class="article-image">
-                        <img src="assets/images/alumni-race.JPG" alt="Maintenance article">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-date">November 28, 2024</span>
-                            <span class="article-category">Maintenance</span>
-                        </div>
-                        <h3>Boat Maintenance Basics</h3>
-                        <p>Essential maintenance tips to keep your boat in top condition throughout the sailing season.</p>
-                        <a href="articles.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-            </div>
-            <div class="articles-cta">
-                <a href="articles.html" class="btn btn-primary">View All Articles</a>
             </div>
         </div>
     </section>
@@ -267,7 +158,6 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="membership.html">Membership</a></li>
                         <li><a href="events.html">Events</a></li>
-                        <li><a href="articles.html">Articles</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="donations.html">Donate</a></li>
@@ -277,16 +167,7 @@
                     <h4>Contact Info</h4>
                     <div class="contact-info">
                         <p><i class="fas fa-map-marker-alt"></i> 8200 Sandy Point Road, Bryan, Texas 77807</p>
-                        <p><i class="fas fa-phone"></i> (512) 636-5009</p>
                         <p><i class="fas fa-envelope"></i> texasaggiesailing@gmail.com</p>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Practice Times</h4>
-                    <div class="hours">
-                        <p><strong>Club Practice Times:</strong> M-T-Th-F 5:00 PM - 8:00 PM</p>
-                        <p><strong>Team Practice Time</strong> W 5:00 PM - 8:00 PM</p>
-                   
                     </div>
                 </div>
             </div>
@@ -302,6 +183,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2"></script>
+    <script src="js/home-events.js?v=2"></script>
 </body>
 </html>

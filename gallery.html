@@ -36,9 +36,6 @@
                     <a href="events.html" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="articles.html" class="nav-link">Articles</a>
-                </li>
-                <li class="nav-item">
                     <a href="gallery.html" class="nav-link active">Gallery</a>
                 </li>
                 <li class="nav-item">
@@ -69,34 +66,34 @@
         </div>
     </section>
   
-<!-- 
+    <!-- Share Photos -->
     <section class="upload-section">
         <div class="container">
             <div class="upload-content">
                 <h2>Share Your Photos</h2>
-                <p>Have great photos from your sailing adventures? Share them with our community!</p>
+                <p>Have great photos from your sailing adventures? Add them to our alumni album!</p>
                 <div class="upload-options">
                     <div class="upload-option">
                         <i class="fas fa-upload"></i>
                         <h3>Upload Photos</h3>
-                        <p>Share your sailing moments with the club</p>
-                        <button class="btn btn-primary">Upload Now</button>
+                        <p>Add your photos directly to our shared Google Drive album</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Upload Now</a>
                     </div>
                     <div class="upload-option">
-                        <i class="fas fa-camera"></i>
-                        <h3>Photo Guidelines</h3>
-                        <p>Learn about our photo submission guidelines</p>
-                        <button class="btn btn-outline">View Guidelines</button>
+                        <i class="fas fa-images"></i>
+                        <h3>Browse the Album</h3>
+                        <p>See the full collection of alumni photos on Google Drive</p>
+                        <a href="https://drive.google.com/drive/folders/1TKXBzpkLo-GDek7N7Il5XUnDZIa2Q1hz" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Album</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>  -->
-    <!-- Gallery Grid -->
+    </section>
+    <!-- Gallery Viewer (one photo at a time, pulled live from Google Drive) -->
     <section class="gallery-section">
         <div class="container">
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Images will be dynamically loaded here -->
+            <div class="gallery-viewer" id="galleryViewer">
+                <p class="events-loading">Loading photos&hellip;</p>
             </div>
         </div>
     </section>
@@ -121,7 +118,6 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="membership.html">Membership</a></li>
                         <li><a href="events.html">Events</a></li>
-                        <li><a href="articles.html">Articles</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="donations.html">Donate</a></li>
@@ -131,16 +127,7 @@
                     <h4>Contact Info</h4>
                     <div class="contact-info">
                         <p><i class="fas fa-map-marker-alt"></i> 8200 Sandy Point Road, Bryan, Texas 77807</p>
-                        <p><i class="fas fa-phone"></i> (512) 636-5009</p>
                         <p><i class="fas fa-envelope"></i> texasaggiesailing@gmail.com</p>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Practice Times</h4>
-                    <div class="hours">
-                        <p><strong>Club Practice Times:</strong> M-T-Th-F 5:00 PM - 8:00 PM</p>
-                        <p><strong>Team Practice Time</strong> W 5:00 PM - 8:00 PM</p>
-                   
                     </div>
                 </div>
             </div>
@@ -156,7 +143,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/gallery.js"></script>
+    <script src="js/main.js?v=2"></script>
+    <script src="js/gallery.js?v=7"></script>
 </body>
 </html>

@@ -31,30 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Hero video handling with GIF
-    const heroVideo = document.getElementById('hero-video');
-    const heroFallback = document.querySelector('.hero-fallback-image');
-    
-    // Load GIF video
-    if (heroVideo) {
-        console.log('Loading GIF video');
-        
-        // Create and insert the GIF
-        heroVideo.innerHTML = `
-            <img 
-                src="assets/videos/newgif.gif"
-                alt="Sailing video"
-                style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"
-                onload="console.log('GIF loaded successfully')"
-                onerror="console.warn('Failed to load GIF, showing fallback'); if(heroFallback) heroFallback.style.opacity = '1';"
-            >
-        `;
-        
-        // Hide fallback image since GIF is loaded
-        if (heroFallback) {
-            heroFallback.style.opacity = '0';
-        }
-    }
+    // Hero background is now a rotating photo slideshow — see js/hero-slideshow.js
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
