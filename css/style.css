@@ -900,11 +900,37 @@ p {
     clear: left;
     font: 14px var(--font-body);
     width: 100%;
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
+}
+
+.mc-name-group,
+.mc-address-fields-group {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.mc-name-group {
+    grid-template-columns: 1fr 1fr;
+}
+
+.mc-address-fields-group {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.mc-name-group .mc-field-group,
+.mc-address-fields-group .mc-field-group {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .mc-name-group,
+    .mc-address-fields-group {
+        grid-template-columns: 1fr;
+    }
 }
 
 #mc_embed_signup h2 {
@@ -947,7 +973,9 @@ p {
     box-shadow: 0 0 0 3px rgba(80, 0, 0, 0.1);
 }
 
-#mc_embed_signup .button {
+#mc_embed_signup input.button {
+    appearance: none;
+    -webkit-appearance: none;
     background: var(--primary-maroon);
     color: var(--white);
     border: none;
@@ -961,7 +989,7 @@ p {
     margin-top: 1rem;
 }
 
-#mc_embed_signup .button:hover {
+#mc_embed_signup input.button:hover {
     background: var(--secondary-maroon);
     transform: translateY(-1px);
     box-shadow: var(--shadow-medium);
@@ -1008,7 +1036,7 @@ p {
         font-size: 16px; /* Prevents zoom on iOS */
     }
     
-    #mc_embed_signup .button {
+    #mc_embed_signup input.button {
         padding: 16px 28px; /* Larger touch target */
         font-size: 1.1rem;
     }
@@ -2584,8 +2612,8 @@ body {
     color: #232323 !important;
 }
 
-/* Ensure form elements stay light */
-input, textarea, select {
+/* Ensure form elements stay light (excludes buttons, which have their own styling) */
+input:not([type="submit"]):not([type="button"]), textarea, select {
     background-color: #ffffff !important;
     color: #232323 !important;
     border-color: #e2e8f0 !important;
@@ -3138,35 +3166,35 @@ img {
 
 .newsletter-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    grid-template-columns: minmax(260px, 1fr) minmax(0, 2.3fr);
+    gap: 3rem;
+    align-items: start;
 }
 
 .newsletter-info h2 {
     color: var(--white);
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.8rem;
 }
 
 .newsletter-info p {
     color: var(--light-gray);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
 }
 
 .newsletter-features {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
 }
 
 .feature {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0.75rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius);
     backdrop-filter: blur(10px);
@@ -3203,6 +3231,7 @@ img {
     padding: 3rem;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-heavy);
+    width: 100%;
 }
 
 .newsletter-form h3 {
@@ -3509,7 +3538,11 @@ img {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
+    .newsletter-features {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .president-info {
         flex-direction: column;
         text-align: center;
@@ -3759,53 +3792,22 @@ img {
     opacity: 0.9;
 }
 
-/* Impact Section */
-.impact-section {
-    padding: 60px 0;
-    background: var(--light-gray);
-}
-
-.impact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.impact-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    text-align: center;
-    box-shadow: var(--shadow-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.impact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
-}
-
-.impact-icon {
-    font-size: 3rem;
-    color: var(--primary-maroon);
-    margin-bottom: 1.5rem;
-}
-
-.impact-card h3 {
-    color: var(--primary-maroon);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.impact-card p {
-    color: var(--gray);
-    line-height: 1.6;
-}
-
 /* Donation Options */
 .donation-options {
-    padding: 100px 0 140px;
+    padding: 60px 0;
+}
+
+.donation-info a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-maroon);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.donation-info a:hover {
+    text-decoration: underline;
 }
 
 .donation-content {

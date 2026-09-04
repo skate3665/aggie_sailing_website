@@ -100,7 +100,7 @@
                     <p class="event-time"><i class="fas fa-clock"></i> ${formatEventTimeRange(event)}</p>
                     ${location ? `<p class="event-location"><i class="fas fa-map-marker-alt"></i> ${escapeHtml(location)}</p>` : ''}
                     <p>${escapeHtml(description)}</p>
-                    <a href="events.html" class="btn btn-outline">Learn More</a>
+                    <a href="/events/" class="btn btn-outline">Learn More</a>
                 </div>
             </div>
         `;
