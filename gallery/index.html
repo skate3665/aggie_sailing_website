@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <title>Aggie Sailing Club - Welcome to the Water</title>
-    <meta name="description" content="Join the Aggie Sailing Club for racing, cruising, and sailing adventures on beautiful lakes. Open to all skill levels.">
+    <title>Gallery - Aggie Sailing Club</title>
+    <meta name="description" content="Browse our photo gallery showcasing sailing adventures, races, events, and beautiful moments on the water.">
             <link rel="stylesheet" href="/css/style.css?v=1.6">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="/about/" class="nav-link">About</a>
@@ -36,7 +36,7 @@
                     <a href="/events/" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/gallery/" class="nav-link">Gallery</a>
+                    <a href="/gallery/" class="nav-link active">Gallery</a>
                 </li>
                 <li class="nav-item">
                     <a href="/contact/" class="nav-link">Contact</a>
@@ -53,91 +53,51 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-video-container">
-            <div class="hero-fallback-image"></div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg">
+            <img src="/assets/images/racing-austin1.JPG" alt="Sailing gallery">
         </div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Welcome to Aggie Sailing</h1>
-                <p style="color: white;">"Where do you even sail in College Station??" <br><i>~Everyone</p>
-                <div class="hero-buttons">
-                    <a href="/membership/" class="btn btn-primary">Join the Club</a>
-                    <a href="/about/" class="btn btn-secondary">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="hero-scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- Welcome Section -->
-    <section class="welcome">
-        <div class="container">
-            <div class="welcome-content">
-                <div class="welcome-text">
-                    <h2>Set Sail with Us</h2>
-                    <p>Whether you're a seasoned sailor or just starting your journey on the water, the Aggie Sailing Club offers something for everyone. From competitive racing to leisurely cruises, we provide opportunities to develop your skills, make lasting friendships, and experience the pure joy of sailing.</p>
-                    <p>Our club welcomes members of all experience levels, from complete beginners to experienced racers. We offer training programs, social events, and access to our fleet of boats.</p>
-                    <a href="/membership/" class="btn btn-primary">Become a Member</a>
-                </div>
-                <div class="welcome-image">
-                    <img src="/assets/images/alumni-race.JPG" alt="Sailing on the lake" >
-                </div>
+        <div class="page-header-content">
+            <div class="container">
+                <h1>Texas A&M Sailing Gallery</h1>
+                <p>A collection of photos from the Aggie Sailing Team through the years</p>
             </div>
         </div>
     </section>
-
-    <!-- Featured Events -->
-    <section class="featured-events">
+  
+    <!-- Share Photos -->
+    <section class="upload-section">
         <div class="container">
-            <h2>Upcoming Events</h2>
-            <div id="home-upcoming-events" class="events-grid">
-                <p class="events-loading">Loading upcoming events&hellip;</p>
+            <div class="upload-content">
+                <h2>Share Your Photos</h2>
+                <p>Have great photos from your sailing adventures? Add them to our alumni album!</p>
+                <div class="upload-options">
+                    <div class="upload-option">
+                        <i class="fas fa-upload"></i>
+                        <h3>Upload Photos</h3>
+                        <p>Submit your photos through our quick upload form</p>
+                        <a href="https://forms.gle/si46ghtxTNtZm8uj6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Upload Now</a>
+                    </div>
+                    <div class="upload-option">
+                        <i class="fas fa-images"></i>
+                        <h3>Browse the Album</h3>
+                        <p>See the full collection of alumni photos on Google Drive</p>
+                        <a href="https://drive.google.com/drive/folders/1Fsh5sQeyQ41L2eRcIKmZnAzqsZoxkPn2Gi2yReHDSg4wn1rGF-m7nxeL1a2xdBGyZmH3BVcm" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Album</a>
+                    </div>
+                </div>
             </div>
-            <div class="events-cta">
-                <a href="/events/" class="btn btn-primary">View All Events</a>
+        </div>
+    </section>
+    <!-- Gallery Viewer (one photo at a time, pulled live from Google Drive) -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-viewer" id="galleryViewer">
+                <p class="events-loading">Loading photos&hellip;</p>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Preview -->
-    <section class="gallery-preview">
-        <div class="container">
-            <h2>Photo Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="/assets/images/racing-austin1.JPG" alt="Sailing on the lake" >
-                    <div class="gallery-overlay">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/assets/images/tulane-girls.JPG" alt="Racing action">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/assets/images/racing-austin-2.JPG" alt="Sunset sailing" >
-                    <div class="gallery-overlay">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/assets/images/team-huddle.JPG" alt="Club social">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-cta">
-                <a href="/gallery/" class="btn btn-primary">View Full Gallery</a>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -184,6 +144,6 @@
     </footer>
 
     <script src="/js/main.js?v=2"></script>
-    <script src="/js/home-events.js?v=2"></script>
+    <script src="/js/gallery.js?v=8"></script>
 </body>
 </html>

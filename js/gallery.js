@@ -11,7 +11,7 @@
 // image is ever downloaded.
 document.addEventListener('DOMContentLoaded', function() {
     const GOOGLE_DRIVE_API_KEY = 'AIzaSyB0Ida_jhuGh3vfQlSnVOkCz7F3wSNa4Go';
-    const ALUMNI_FOLDER_ID = '1TKXBzpkLo-GDek7N7Il5XUnDZIa2Q1hz';
+    const ALUMNI_FOLDER_ID = '1Fsh5sQeyQ41L2eRcIKmZnAzqsZoxkPn2Gi2yReHDSg4wn1rGF-m7nxeL1a2xdBGyZmH3BVcm';
 
     // Drive filenames follow a "YYYY-MM-DD - Event Name (n).ext" convention
     // for the alumni archive; pull a readable title out of that where
@@ -45,7 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function fetchDriveFolderImages(folderId) {
-        const query = `'${folderId}' in parents and trashed = false`;
+        // The shared folder isn't guaranteed to contain only photos — e.g.
+        // it also holds a Google Form for submitting new photos — so this
+        // filters to actual image files rather than assuming everything in
+        // the folder is displayable.
+        const query = `'${folderId}' in parents and trashed = false and mimeType contains 'image/'`;
         const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(query)}` +
             `&key=${encodeURIComponent(GOOGLE_DRIVE_API_KEY)}` +
             `&fields=${encodeURIComponent('files(id,name)')}` +
@@ -196,6 +200,7 @@ style.textContent = `
         top: 50%;
         transform: translateY(-50%);
         background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(4px);
         border: none;
         border-radius: 50%;
         width: 50px;
@@ -208,11 +213,13 @@ style.textContent = `
         color: var(--primary-maroon);
         font-size: 1.1rem;
         z-index: 2;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
     }
 
     .viewer-nav:hover {
         background: var(--white);
         transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
     }
 
     .viewer-prev {
@@ -269,9 +276,23 @@ style.textContent = `
     }
 
     .upload-option i {
-        font-size: 3rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--light-maroon), var(--white));
         color: var(--primary-maroon);
-        margin-bottom: 1rem;
+        font-size: 1.6rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 6px 16px rgba(80, 0, 0, 0.12);
+        transition: var(--transition);
+    }
+
+    .upload-option:hover i {
+        transform: scale(1.08);
+        box-shadow: 0 10px 24px rgba(80, 0, 0, 0.18);
     }
 
     .upload-option h3 {
