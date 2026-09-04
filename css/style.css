@@ -3810,6 +3810,19 @@ img {
     text-decoration: underline;
 }
 
+.donation-info a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-maroon);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.donation-info a:hover {
+    text-decoration: underline;
+}
+
 .donation-content {
     display: grid;
     grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
