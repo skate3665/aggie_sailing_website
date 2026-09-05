@@ -3794,20 +3794,7 @@ img {
 
 /* Donation Options */
 .donation-options {
-    padding: 60px 0;
-}
-
-.donation-info a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--primary-maroon);
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.donation-info a:hover {
-    text-decoration: underline;
+    padding: 100px 0 140px;
 }
 
 .donation-info a {
